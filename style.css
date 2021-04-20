@@ -1,0 +1,265 @@
+* {
+  padding: 0%;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+}
+.hidden {
+  display: none !important;
+}
+/* /////////////////// 🤤🤤styling main class */
+.main {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(242, 231, 241);
+}
+.parentbox {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  width: 700px;
+  padding: 20px;
+  background-color: white;
+  position: relative;
+  border-radius: 20px;
+}
+.parentbox h1 {
+  text-align: center;
+  margin-bottom: 50px;
+  color: rgb(71, 42, 65);
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+}
+.parentbox h2 {
+  margin-bottom: 20px;
+  color: rgb(71, 42, 65);
+  letter-spacing: 2px;
+}
+.cross {
+  position: absolute;
+  top: 0px;
+  left: 655px;
+  padding: 5px;
+  font-size: 30px;
+}
+.cross:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+#warning {
+  position: absolute;
+  top: 230px;
+  left: 290px;
+
+  padding: 10px;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: red;
+}
+.inputbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border: none;
+  padding: 20px 30px;
+  margin: 0px 0px 40px 0px;
+  font-size: 30px;
+  letter-spacing: 2px;
+  color: grey;
+}
+.radiobtn {
+  transform: translate(-30px, 0px);
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  color: grey;
+  margin-bottom: 20px;
+}
+.male,
+.female {
+  margin: 10px;
+  padding: 5px;
+}
+#female,
+#male {
+  margin: 10px;
+}
+.btn {
+  border: none;
+  color: white;
+  border: none;
+  background-color: rgba(0, 0, 255, 0.7);
+  text-transform: uppercase;
+  padding: 10px 15px;
+  border-radius: 5px;
+  position: absolute;
+  letter-spacing: 1px;
+  top: 270px;
+  left: 610px;
+  transition: all 0.2s ease-in-out;
+}
+.btn:hover {
+  cursor: pointer;
+  transform: scale(1.06);
+  background-color: rgba(0, 0, 255, 0.9);
+}
+
+/*  🤯🤯Ending of .main class */
+/* //////////////////////////////////////////////////// */
+/* Image box */
+.imagebox {
+  margin-top: 10px;
+}
+.image {
+  width: 120px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+/* Start pig game configueration */
+.piggame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.container {
+  padding: 5px;
+  display: flex;
+  position: relative;
+}
+.opacity {
+  opacity: 0.2;
+}
+
+.container h1 {
+  text-align: center;
+  margin-bottom: 50px;
+  color: rgb(64, 77, 74);
+}
+.player {
+  width: 320px;
+  padding: 10px 20px;
+  margin: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+.score {
+  color: grey;
+  padding: 5px;
+  font-size: 30px;
+  margin: 10px 0px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.total {
+  height: 200px;
+  text-align: center;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.totalscore {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: 70px;
+  left: 80px;
+  font-size: 50px;
+  color: rgb(60, 2, 91);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player .current {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100px;
+  background-color: rgb(48, 42, 52);
+  color: white;
+  letter-spacing: 1px;
+  box-shadow: 0px 0px 10px rgba(36, 26, 41, 0.8);
+  border-radius: 20px;
+}
+span.currentscore {
+  position: absolute;
+  top: 48px;
+  width: 60px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Button list Class  */
+.btnlist .buttn {
+  width: 300px;
+  display: block;
+  margin: 20px 0px;
+  padding: 10px 30px;
+  border: none;
+  background-color: rgba(0, 0, 255, 0.6);
+  color: white;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  font-size: 20px;
+}
+.buttn:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 255, 0.9);
+}
+.btn:focus,
+input:focus,
+.buttn:focus {
+  outline: none;
+}
+/* Winer class design */
+.winer {
+  background-color: rgb(121, 132, 140);
+  border-radius: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  box-shadow: -4px 4px 10px 2px rgba(121, 132, 140, 0.575),
+    10px 10px 15px rgba(121, 132, 140, 0.8);
+  position: absolute;
+  top: 38%;
+  left: 35%;
+  padding: 20px;
+  font-size: 30px;
+  letter-spacing: 1px;
+  color: white;
+}
+.crsbtn {
+  font-size: 60px;
+  position: absolute;
+  padding: 5px 20px;
+  border: none;
+  top: 2%;
+  left: 2%;
+  transition: all 0.5s ease-in-out;
+}
+.crsbtn:hover {
+  cursor: pointer;
+  border-radius: 40px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.winplayer {
+  font-size: 40px;
+  padding-bottom: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.party {
+  text-align: center;
+  font-size: 50px;
+}
