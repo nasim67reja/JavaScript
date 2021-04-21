@@ -15,6 +15,7 @@ let currentScoreDom = document.querySelectorAll('.currentscore');
 let totalScoreDom = document.querySelectorAll('.totalscore');
 let winerDom = document.querySelector('.winer');
 const crsBtn2 = document.querySelector('.crsbtn');
+const currentPlayerBox = document.querySelectorAll('.player');
 let firstPlayer = '';
 let secondPlayer = '';
 let currentScore = 0;
@@ -59,6 +60,15 @@ document.addEventListener('keydown', function (e) {
   else if (e.key === 'Escape') welcomePigGame();
 });
 
+const activePlayer = function () {
+  currentPlayerBox[currenPlayer].classList.add('bg');
+  currentPlayerBox[currenPlayer].classList.add('opacity1');
+  currentScoreDom[currenPlayer].textContent = '0';
+  currenPlayer = currenPlayer === 0 ? 1 : 0;
+  currentScore = 0;
+  currentPlayerBox[currenPlayer].classList.remove('bg');
+  currentPlayerBox[currenPlayer].classList.remove('opacity1');
+};
 // /// Role dice button handler ===>>
 rollBtn[0].addEventListener('click', function () {
   let randomNumber = Math.trunc(Math.random() * 6) + 1;
@@ -67,9 +77,7 @@ rollBtn[0].addEventListener('click', function () {
   if (randomNumber !== 1) {
     currentScoreDom[currenPlayer].textContent = currentScore;
   } else {
-    currentScoreDom[currenPlayer].textContent = '0';
-    currenPlayer = currenPlayer === 0 ? 1 : 0;
-    currentScore = 0;
+    activePlayer();
   }
 });
 
@@ -77,7 +85,6 @@ rollBtn[0].addEventListener('click', function () {
 rollBtn[1].addEventListener('click', function () {
   totalScore[currenPlayer] += currentScore;
   totalScoreDom[currenPlayer].textContent = totalScore[currenPlayer];
-  currentScoreDom[currenPlayer].textContent = '0';
   if (totalScore[currenPlayer] >= 100) {
     winerDom.classList.remove('hidden');
     pigGame.classList.add('opacity');
@@ -87,8 +94,7 @@ rollBtn[1].addEventListener('click', function () {
     document.querySelector('.playerwin').textContent =
       totalScore[0] > 100 ? p1 : p2;
   }
-  currenPlayer = currenPlayer === 0 ? 1 : 0;
-  currentScore = 0;
+  activePlayer();
 });
 // //// Cross button 2 handler
 crsBtn2.addEventListener('click', function () {
