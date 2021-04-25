@@ -1,0 +1,142 @@
+/* Text color : rgb(217, 229, 217) 
+light green:rgb(126, 213, 111)
+rgb(40, 180, 131)
+fontweight -300,400,500,700
+*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0%;
+}
+
+body {
+  color: white;
+  padding: 2rem;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.5;
+}
+.logo {
+  height: 40px;
+  position: absolute;
+  top: 70px;
+  left: 70px;
+  z-index: 2;
+}
+.header {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right,
+      rgba(126, 213, 111, 0.8),
+      rgba(40, 180, 131, 0.8)
+    ),
+    url(hero.jpg);
+  background-size: cover;
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.headerbox {
+  text-transform: uppercase;
+  text-align: center;
+  transform: translate(20px, -130px);
+}
+.mainheader {
+  display: block;
+  font-weight: 500;
+  letter-spacing: 32px;
+  font-size: 60px;
+  animation-name: fromLeft;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+}
+@keyframes fromLeft {
+  0% {
+    transform: translateX(-60px);
+    opacity: 0.3;
+  }
+  80% {
+    transform: translateX(10px);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.subheader {
+  font-weight: 400;
+  display: block;
+  letter-spacing: 13px;
+  font-size: 24px;
+  animation-name: fromRight;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+}
+@keyframes fromRight {
+  0% {
+    transform: translate(60px, 0px);
+    opacity: 0.3;
+  }
+  80% {
+    transform: translate(-10px, 0);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(0px, 0px);
+    opacity: 1;
+  }
+}
+.primary-btn {
+  margin-top: -60px;
+  padding: 20px 25px;
+  color: rgb(74, 89, 92);
+  letter-spacing: 1px;
+  font-size: 14px;
+  border: none;
+  border-radius: 30px;
+  text-transform: uppercase;
+  background-color: white;
+  /* animation-name: moveFromBottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1; */
+  animation: moveFromBottom 1s ease-out 1;
+
+  /* box-shadow: -1px 5px 10px rgba(0, 0, 0, 0.3); */
+}
+.primary-btn:hover {
+  cursor: pointer;
+  animation: boxShadow 0.4s ease-out 1 reverse;
+  box-shadow: -1px 5px 10px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+}
+.primary-btn:focus {
+  outline: none;
+}
+@keyframes boxShadow {
+  0% {
+    /* box-shadow: 0px 0px 10px 30px rgba(255, 255, 255, 0.5); */
+    box-shadow: 0px 0px 10px 30px rgba(106, 220, 246, 0.7);
+  }
+  80% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: -1px 5px 10px rgba(0, 0, 0, 0.3);
+  }
+}
+@keyframes moveFromBottom {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
