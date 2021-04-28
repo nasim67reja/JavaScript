@@ -12,7 +12,7 @@ fontweight -300,400,500,700
 body {
   color: white;
   padding: 2rem;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   line-height: 1.5;
 }
 .logo {
@@ -109,14 +109,28 @@ body {
 
   /* box-shadow: -1px 5px 10px rgba(0, 0, 0, 0.3); */
 }
+@keyframes moveFromBottom {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
 .primary-btn:hover {
   cursor: pointer;
   animation: boxShadow 0.4s ease-out 1 reverse;
   box-shadow: -1px 5px 10px rgba(0, 0, 0, 0.3);
   transform: translateY(-3px);
 }
-.primary-btn:focus {
+/* .primary-btn:focus {
   outline: none;
+} */
+.primary-btn:active {
+  transform: translateY(-2px);
 }
 @keyframes boxShadow {
   0% {
@@ -128,15 +142,5 @@ body {
   }
   100% {
     box-shadow: -1px 5px 10px rgba(0, 0, 0, 0.3);
-  }
-}
-@keyframes moveFromBottom {
-  0% {
-    transform: translateY(50px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0px);
-    opacity: 1;
   }
 }
