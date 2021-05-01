@@ -4,6 +4,7 @@
 //  we can find here information about destructing array and object
 // /////   https://www.freecodecamp.org/news/array-and-object-destructuring-in-javascript/
 ///////    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+/////(imp)   https://codingnconcepts.com/javascript/array-destructuring/
 ///////    https://www.javatpoint.com/es6-array-destructuring
 /////🔔🔔🔔🔔🔔🔔🔔🔔🔔🔔🔔🔔🔔🔔🔔🔔
 
@@ -57,7 +58,7 @@ const [num1, num2, num3] = returnArr();
 //////👉👉👉👉👉 5. Using Default Values       =======>>>>>
 // Default values can be assigned to the variables just in case the value extracted from the array is undefined:
 // const [num1_, num2_] = [1]; if we write like this num2_ should be undefined but if we write like this :
-const [num1_ = "notFound", num2_ = "notFound"] = [1];
+const [num1_ = 'notFound', num2_ = 'notFound'] = [1];
 // console.log(num1_, num2_);
 
 // 👉👉👉👉👉 6.Swapping Values using the Destructuring Assignment
@@ -70,3 +71,8 @@ let snum = 3;
 // snum = newn
 [fnum, snum] = [snum, fnum]; /// but es6 make it easier
 // console.log(fnum, snum);
+
+// 👉👉👉👉👉 7. Nested array destructing ===>>>
+const nestedArr = [1, 2, 3, [12, 11, 21]];
+const [firstNum, , , [Nfirst, Nsecond, Nthird]] = nestedArr;
+// console.log(Nfirst, Nsecond, Nthird);
