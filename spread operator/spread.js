@@ -20,8 +20,8 @@ let number = [3, 2, 4];
 // console.log(addNum(1, ...number, ...[2])); // 12
 
 //👉👉👉 rule 2 : We can add two array =>
-let firstArr = ["tonmoy", "shihab", "sadikul", "labib", "fahim"];
-let secondArr = ["fahim", "toufiq", "rezwan", "lafis"];
+let firstArr = ['tonmoy', 'shihab', 'sadikul', 'labib', 'fahim'];
+let secondArr = ['fahim', 'toufiq', 'rezwan', 'lafis'];
 let allStudents = [...firstArr, ...secondArr]; // let concatarr = firstArr.concat(secondArr);
 // console.log(allStudents);
 
