@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@300;400;500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.7;
+}
+
+.heading2 {
+  font-family: "Poppins", cursive;
+  font-size: 2.1875rem;
+  letter-spacing: 1.5px;
+  color: #6b717f;
+}
+
+.white {
+  color: white !important;
+  padding: 0.625rem;
+}
+
+.text {
+  font-size: 1.125rem;
+  color: #6b717f;
+  text-align: justify;
+}
+
+.black-section {
+  padding: 0.9375rem;
+  background-color: black;
+}
+.black-section .heading2 {
+  margin: 0.625rem 0 0 0;
+}
+.black-section .white {
+  margin-bottom: 1.5625rem;
+}
+
+.header {
+  background-color: #f8f7f7;
+  position: relative;
+  padding: 3.125rem;
+  height: 40vh;
+}
+.header .heading1 {
+  font-size: 5rem;
+  font-weight: 300;
+  top: 18vh;
+  left: 8vw;
+  transform: translate(50%, 50%);
+  position: absolute;
+  color: #6b717f;
+}
+.header .logo-box .logo {
+  width: 11.25rem;
+  top: 1.25rem;
+  left: 1.875rem;
+  position: absolute;
+}
+.header .header--main {
+  display: flex;
+  justify-content: flex-end;
+}
+.header .header--main .header--main--content {
+  display: block;
+  margin: 0.625rem;
+  font-size: 1.875rem;
+}
+.header .header--main .header--main--content a,
+.header .header--main .header--main--content a:link,
+.header .header--main .header--main--content a:active {
+  color: #16084b;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.375rem;
+}
+.header .header--main .header--main--content a:hover,
+.header .header--main .header--main--content a:link:hover,
+.header .header--main .header--main--content a:active:hover {
+  background-color: #0f033a;
+  color: white;
+}
+.header .inputbox {
+  margin: 0.625rem 0.625rem 0.625rem 1.25rem;
+}
+.header .inputbox .inputtext {
+  font-size: 1.0625rem;
+  padding: 0.4375rem;
+  border: 2px solid silver;
+  color: grey;
+}
+
+.awesome--section {
+  display: flex;
+  justify-content: space-around;
+  flex-shrink: 1;
+}
+.awesome--section .awesome--section--content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  font-size: 2rem;
+  padding: 0.625rem;
+  color: rgba(107, 113, 127, 0.6);
+  font-weight: 300;
+}
+.awesome--section .awesome--section--logo {
+  padding: 0.625rem;
+  width: 50%;
+}
+.awesome--section .awesome--section--logo .glass {
+  width: 100%;
+}
+
+.info {
+  background-color: #6b717f;
+  display: flex;
+  justify-content: center;
+  color: white;
+  list-style: none;
+  padding: 0.9375rem 0 1.5625rem 0;
+}
+.info .link {
+  padding: 0 0.625rem;
+  font-weight: 500;
+}
+.info a,
+.info a:link,
+.info a:active {
+  color: white;
+  padding: 0.1875rem;
+}
+.info a:hover {
+  text-decoration: none;
+  background-color: #897b93;
+}
+
+.grid-section {
+  padding: 3.125rem;
+  margin-top: 1.25rem;
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.875rem;
+}
+.grid-section .box {
+  padding: 0.625rem;
+}
+.grid-section .box h2 {
+  margin-bottom: 1.25rem;
+}
+
+.footer {
+  background-color: #f8f7f7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1.875rem;
+}
+.footer .footer--content {
+  margin: 1.875rem 0;
+}
+.footer .footer--content .text {
+  max-width: 1000px;
+}
+.footer .footer--content .linklist {
+  margin-top: 1.25remx;
+  display: flex;
+  list-style: none;
+}
+.footer .footer--content .linklist a,
+.footer .footer--content .linklist a:link,
+.footer .footer--content .linklist a:active {
+  border: 2px solid white;
+  color: black;
+  text-decoration: none;
+  padding: 0.3125rem;
+  margin: 0.3125rem;
+}
+.footer .footer--content .linklist a:hover,
+.footer .footer--content .linklist a:link:hover,
+.footer .footer--content .linklist a:active:hover {
+  background-color: #e4e3f0;
+}
+.footer .btn {
+  margin-right: 3.125rem;
+}
+.footer .btn a,
+.footer .btn a:link,
+.footer .btn a:active {
+  padding: 0.3125rem 0.625rem;
+  text-decoration: none;
+  color: white;
+  background-color: #886fe2;
+  border: none;
+  border-radius: 0.625rem;
+}
+.footer .btn a:hover,
+.footer .btn a:link:hover,
+.footer .btn a:active:hover {
+  background-color: #7059c7;
+}
+
+/*# sourceMappingURL=/main.77bb5cfd.css.map */
