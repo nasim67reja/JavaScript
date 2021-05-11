@@ -6,7 +6,7 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 body {
@@ -223,42 +223,47 @@ body {
 }
 
 .documentation {
-  padding: 10px;
-  border: 2px solid blue;
+  padding: 0.625rem;
   display: flex;
   align-items: center;
 }
 .documentation .documentation--content {
-  border: 2px solid blue;
   width: 50%;
   margin-right: 1rem;
 }
 .documentation .documentation--content li {
-  margin: 1rem 5px;
+  margin: 1rem 0.3125rem;
   list-style: none;
 }
 .documentation .documentation--content a,
 .documentation .documentation--content a:link,
 .documentation .documentation--content a:active {
   text-decoration: none;
-  padding: 5px 10px;
-  border: 1px solid silver;
+  padding: 0.3125rem 0.625rem;
   font-size: 1.2rem;
 }
+.documentation .documentation--content a:hover,
+.documentation .documentation--content a:link:hover,
+.documentation .documentation--content a:active:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 1.5rem;
+}
 .documentation .documentation--information {
-  border: 2px solid yellow;
   width: 70%;
 }
 .documentation .documentation--information .mutetext {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: justify;
-  font-size: 2rem;
+  font-size: 1.7rem;
   padding: 0.625rem;
   color: rgba(107, 113, 127, 0.6);
   font-weight: 300;
   margin-bottom: 1rem;
+  margin-left: -1.7rem;
+}
+.documentation .documentation--information .text {
+  line-height: 2;
 }
 
 /*# sourceMappingURL=/main.77bb5cfd.css.map */
