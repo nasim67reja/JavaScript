@@ -18,6 +18,7 @@
     </section>
     <!-- Header Section -->
     <header class="header">
+        <!-- 
         <h1 class="heading1">CSS with superpowers</h1>
         <div class="logo-box">
             <img src="../img/sass--logo.svg" alt="" class="logo">
@@ -41,10 +42,29 @@
             <div class="inputbox">
                 <input type="text" placeholder="Search" class="inputtext">
             </div>
-        </div>
+        </div> -->
+        <nav class="navber">
+            <div class="logobox">
+                <img src="../img/sass--logo.svg" alt="" class="logo">
+            </div>
+            <ul class="navber--content">
+                <li class="navber--content--item"> <a href="#"> Install</a></li>
+                <li class="navber--content--item"> <a href="#"> Learn Sass</a></li>
+                <li class="navber--content--item"> <a href="#"> Blog</a></li>
+                <li class="navber--content--item"> <a href="#"> Documentation</a></li>
+                <li class="navber--content--item"> <a href="#"> Get Involved</a></li>
+                <li class="navber--content--item">
+                    <div class="inputbox">
+                        <input type="text" placeholder="Search" class="input">
+                    </div>
+                </li>
+
+            </ul>
+        </nav>
+        <h1 class="heading1">CSS with superpowers</h1>
     </header>
     <!-- awesome--section class -->
-    <div class="awesome--section">
+    <div class="awesome--section ">
         <div class="awesome--section--content">
             Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.
         </div>
@@ -52,6 +72,65 @@
             <img src="../img/glass.svg" class="glass" alt="glass">
         </div>
     </div>
+    <!-- Documentaion page design -->
+    <div class="documentation hidden">
+        <div class="documentaion--content">
+            <h2 class="heading2">Contents</h2>
+            <ul class="documentation--content--list">
+                <li class="documentation--content--list--item">
+                    <a href="#">Syntax</a>
+                </li>
+                <li class="documentation--content--list--item">
+                    <a href="#">Style Rules</a>
+                </li>
+                <li class="documentation--content--list--item">
+                    <a href="#">Variables</a>
+                </li>
+                <li class="documentation--content--list--item">
+                    <a href="#">Interpolation</a>
+                </li>
+                <li class="documentation--content--list--item">
+                    <a href="#">At-Rules</a>
+                </li>
+                <li class="documentation--content--list--item">
+                    <a href="#">Values</a>
+                </li>
+                <li class="documentation--content--list--item">
+                    <a href="#">Operators</a>
+                </li>
+                <li class="documentation--content--list--item">
+                    <a href="#">Built-In Modules</a>
+                </li>
+                <li class="documentation--content--list--item">
+                    <a href="#">Breaking Changes</a>
+                </li>
+                <li class="documentation--content--list--item">
+                    <a href="#">Command Line</a>
+                </li>
+                <li class="documentation--content--list--item">
+                    <a href="#">JavaScript API</a>
+                </li>
+            </ul>
+        </div>
+        <div class="documentaion--information">
+            <div class="mutetext">
+                Sass is a stylesheet language that’s compiled to CSS. It allows you to use variables, nestedrules,
+                mixins, functions,and more, all with a fully CSS-compatible syntax. Sass helps keep large
+                stylesheetswell-organized and makes it easy to
+                share design within and across projects.
+            </div>
+            <ul class="text">
+                <li>If you’re looking for an introduction to Sass, check out the tutorial.</li>
+                <li>If you want to look up a built-in Sass function, look no further than the built-in module
+                    reference.</li>
+                <li>If you’re calling Sass from JavaScript, you may want the JS API documentation.</li>
+                <li>Or the Dart API documentation if you’re calling it from Dart.</li>
+                <li>Otherwise, use the table of contents for the language reference!</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- End of documentaion page design -->
     <ul class="info ">
         <li class="info--text">Current Releases:</li>
         <li class="info--text "><span class="link ">
@@ -77,7 +156,8 @@
                 CSS Compatible
             </h2>
             <p class="text">
-                Sass is completely compatible with all versions of CSS. We take this compatibility seriously, so that
+                Sass is completely compatible with all versions of CSS. We take this compatibility seriously, so
+                that
                 you can seamlessly
                 use any available CSS libraries.
             </p>
@@ -87,7 +167,8 @@
                 Feature Rich
             </h2>
             <p class="text">
-                Sass boasts more features and abilities than any other CSS extension language out there. The Sass Core
+                Sass boasts more features and abilities than any other CSS extension language out there. The Sass
+                Core
                 Team has worked
                 endlessly to not only keep up, but stay ahead.
             </p>
@@ -149,6 +230,7 @@
         </div>
         <div class="btn"><a href="#"> <i></i>Follow @SassCSS</a></div>
     </footer>
+    <script src="script.js"></script>
 </body>
 
 </html>
