@@ -135,18 +135,25 @@ var headingOne = document.querySelector("h1");
 var awesomeSection = document.querySelector(".awesome--section");
 var gridSection = document.querySelector(".grid-section");
 var documentationSection = document.querySelector(".documentation");
-console.log(documentationSection); // for (let i = 0; i < navItem.length; i++) {
-//   console.log(navItem[i].textContent);
-// }
+var installPage = document.querySelector(".install--section");
 
 var _navItem = _slicedToArray(navItem, 4),
+    Install = _navItem[0],
     documentation = _navItem[3];
 
 documentation.addEventListener("click", function () {
   headingOne.textContent = "Documentaion";
   awesomeSection.classList.add("hidden");
   gridSection.classList.add("hidden");
-  documentationSection.classList.remove("hidden"); // console.log(documentationSection);
+  documentationSection.classList.remove("hidden");
+  installPage.classList.add("hidden"); // console.log(documentationSection);
+});
+Install.addEventListener("click", function () {
+  headingOne.textContent = "Install Sass";
+  installPage.classList.remove("hidden");
+  awesomeSection.classList.add("hidden");
+  gridSection.classList.add("hidden");
+  documentationSection.classList.add("hidden");
 });
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -176,7 +183,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55880" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50437" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

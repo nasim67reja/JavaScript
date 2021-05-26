@@ -3,16 +3,23 @@ let headingOne = document.querySelector("h1");
 let awesomeSection = document.querySelector(".awesome--section");
 let gridSection = document.querySelector(".grid-section");
 let documentationSection = document.querySelector(".documentation");
-console.log(documentationSection);
+let installPage = document.querySelector(".install--section");
 
-// for (let i = 0; i < navItem.length; i++) {
-//   console.log(navItem[i].textContent);
-// }
-let [, , , documentation] = navItem;
+let [Install, , , documentation] = navItem;
 documentation.addEventListener("click", function () {
   headingOne.textContent = "Documentaion";
   awesomeSection.classList.add("hidden");
   gridSection.classList.add("hidden");
   documentationSection.classList.remove("hidden");
+  installPage.classList.add("hidden");
+
   // console.log(documentationSection);
+});
+
+Install.addEventListener("click", function () {
+  headingOne.textContent = "Install Sass";
+  installPage.classList.remove("hidden");
+  awesomeSection.classList.add("hidden");
+  gridSection.classList.add("hidden");
+  documentationSection.classList.add("hidden");
 });
