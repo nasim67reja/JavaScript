@@ -2,7 +2,9 @@
 // to be expanded in places where zero or more arguments (for function calls) or
 // elements (for array literals) are expected, or an object expression to be expanded
 //  in places where zero or more key-value pairs (for object literals) are expected.
-
+// /////////////////////👉👉👉👉 Main usues of Spread operator :
+/////////////////////////////////////////////////// list er unpack korte
+///////////////////////////////////////// (2). function er parameter value pathaite
 // 👉👉👉 Spread syntax can be used when all elements from
 // an object or array need to be included in a list of some kind.
 
@@ -82,3 +84,22 @@ let classNine = {
 };
 let classEight_Nine = { ...classEight, ...classNine, ...{ roll7_1: 'Tonmoy' } };
 // console.log(classEight_Nine);
+
+// //////////// Important uses of spread operator :
+
+function sumationNum(num1, num2, num3) {
+  let add = num1 + num2 + num3;
+  return add;
+}
+const addNumber = [2, 3, 1, 2];
+// console.log(sumationNum(...addNumber));
+
+// Practice  2:
+function addedNum(...num) {
+  let sum = 0;
+  for (let i = 0; i < num.length; i++) {
+    sum = sum + num[i];
+  }
+  return sum;
+}
+// console.log(addedNum(2, 3, 4, 2));

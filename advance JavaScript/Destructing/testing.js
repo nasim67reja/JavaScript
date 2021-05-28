@@ -1,6 +1,10 @@
-//  JavaScript testing here =>
-const studentList = ['Noyon', 'Nadvi', 'Ashik'];
-let [first, second, third, fourth = 'none'] = studentList;
-console.log(first, fourth);
-[first, fourth] = [fourth, first];
-console.log(first, fourth);
+// JavaScript object destructing =>
+
+function addNum(...num) {
+  let add = 0;
+  for (let i = 0; i < num.length; i++) {
+    add = add + num[i];
+  }
+  return add;
+}
+console.log(addNum(2, 3, 4, 1));
