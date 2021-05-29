@@ -44,3 +44,8 @@ const football = {
 // ///////// left side rest Pattern  //// right side Spread operator
 let { quantity1, ...others } = { ...cricketBat, ...football };
 console.log(quantity1, others);
+
+//  Spread operator  is used where we would  otherwise write values separate by comma
+//  on the otherhand rest pattern is basically used where we would write variables names separate by commas
+//   rest pattern used where variable exist with separate by comma besides spread operator used
+//  where value exist with separate by comma
