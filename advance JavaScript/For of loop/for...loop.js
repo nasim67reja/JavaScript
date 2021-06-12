@@ -7,17 +7,33 @@
 // }
 const students = ['tonmoy', 'sadiqul', 'mimfat', 'nahid', 'fahim'];
 for (const student of students) {
-  console.log(student);
+  // console.log(student);
 }
 for (const student of students.entries()) {
   // Entries method gives the into format with index
-  console.log(`${student[0] + 1} : ${student[1]}`);
+  // console.log(`${student[0] + 1} : ${student[1]}`);
 }
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+// for (const day of weekdays) {
+//   console.log(day);
+// }
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekdays[5]]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+// console.log(Object.keys(openingHours));
+// console.log(Object.values(openingHours));
 
-function updateLight(current) {
-  return current === 'green'
-    ? 'yellow'
-    : current === 'yellow'
-    ? 'red'
-    : 'green';
+for (const day of Object.values(openingHours)) {
+  console.log(day);
 }
