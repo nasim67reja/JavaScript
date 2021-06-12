@@ -72,3 +72,4 @@ const { team1, x: draw, team2 } = game.odds;
 // Test data for 6.: First, use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'.
 // Then, call the function again with players from game.scored
 // GOOD LUCK �
+console.log('Hello World !');
