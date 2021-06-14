@@ -1,4 +1,5 @@
 'use stict';
+/////////////////////////////////////// imp link: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
 // The Map object holds key-value pairs and remembers the original insertion order of the keys.
 // Any value (both objects and primitive values) may be used as either a key or a value.
 // A Map object iterates its elements in insertion order — a for...of loop returns an array of [key, value] for each iteration.
@@ -72,3 +73,55 @@ contacts.entries();
 // .................................
 // 👉👉👉👉  10 . size property
 contacts.size; // Returns the size of the maps
+
+//////////////////////////////////////  👉👉👉👉👉 11. alternative of set method ////////////////
+//  Here we can pass an array . and this array itself will contain multiple arrays and
+// each of  these arrays  the first position is gonna be the key and the second position is gonna be
+// the value, so let's do that
+const alterSet = new Map([
+  ['fname', 'Nasim'],
+  ['lname', 'Reja'],
+]);
+//  and when we need to add element into our maps we can use the set method
+
+///////////////////////////////////////// ⚡⚡⚡⚡⚡⚡ Little bit try with JavaScript Map's
+const question = new Map([
+  ['question', 'Which device people use most ?'],
+  [1, 'Mobile'],
+  [2, 'Desktop'],
+  [3, 'Laptop'],
+  ['correct', 2],
+  [true, 'Correct✌'],
+  [false, 'Try again 😓'],
+]);
+console.log(question.get('question'));
+
+///////// Maps are iterable so for of loop works here
+for (const [item1, item2] of question) {
+  if (typeof item1 === 'number') {
+    console.log(`Answer ${item1} : ${item2}`);
+  }
+}
+// const input = Number(prompt('Enter your Result :')); // Remember this is only work in web page not in node
+// console.log(
+//   input === question.get('correct') ? question.get(true) : question.get(false)
+// );
+// shorcut again
+// console.log(question.get(question.get('correct') === input));
+
+// if (input === question.get("correct")) console.log(question.get(true));
+// else console.log(question.get(false));
+// const output = (input === question.get("correct"))?(question.get(true)
+// :(question.get(false)
+// const output =
+//   input === question.get("correct") ? question.get(true) : question.get(false);
+// console.log(ouput);
+
+//  👉👉👉👉👉 12 . Convert map to array
+const mapArr = [...question];
+const mapKeyArr = [...question.keys()];
+const mapValueArr = [...question.values()];
+// console.log(mapValueArr);
+// console.log(mapArr);
+
+// 👉👉👉👉 13 . Convert Object to Map
