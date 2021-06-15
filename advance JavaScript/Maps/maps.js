@@ -94,12 +94,18 @@ const question = new Map([
   [true, 'Correct✌'],
   [false, 'Try again 😓'],
 ]);
-console.log(question.get('question'));
+// console.log(question.get('question'));
 
-///////// Maps are iterable so for of loop works here
+///////// Maps are iterable so for..of loop works here
+for (const item of question.keys()) {
+  // console.log(item);
+}
+for (const item of question.values()) {
+  // console.log(item);
+}
 for (const [item1, item2] of question) {
   if (typeof item1 === 'number') {
-    console.log(`Answer ${item1} : ${item2}`);
+    // console.log(`Answer ${item1} : ${item2}`);
   }
 }
 // const input = Number(prompt('Enter your Result :')); // Remember this is only work in web page not in node
@@ -125,3 +131,24 @@ const mapValueArr = [...question.values()];
 // console.log(mapArr);
 
 // 👉👉👉👉 13 . Convert Object to Map
+// ......................
+// 👉👉👉👉 14 . Cloning and merging Maps :
+// just like arrays, map's can be cloned:
+const original = new Map([[1, 'one']]);
+const clone = new Map(original);
+// console.log(original === clone); answer will false beacuse the data itself is not cloned
+
+//  Maps can merged, maintaining kew uniqueness :
+let first = new Map([
+  [1, 'one'],
+  [2, 'two'],
+  [3, 'three'],
+]);
+let second = new Map([
+  [1, 'uno'],
+  [2, 'dos'],
+]);
+// merge two maps.The last repeated key wins.
+//  Spread operator essentially converts a Map to an Array
+let merged = new Map([...first, ...second, [1, 'eins']]);
+// console.log(merged); // Return Map { 1 => 'eins', 2 => 'dos', 3 => 'three' }
