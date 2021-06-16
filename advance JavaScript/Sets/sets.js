@@ -62,4 +62,4 @@ const myFirstNameSet = new Set(myFirstName);
 // console.log(new Set('Nasimrejaleon').size); The word contain 11 specific  letters
 
 // 👉👉👉 12 . clear all item from a sets
-console.log(mySet.clear);
+mySet.clear();
