@@ -41,7 +41,15 @@ console.log(gameEventsArr);
 gameEvents.delete(64);
 
 // Task 3 :
-
+console.log('Task 3 :');
+const lastTime = [...new Set(gameEvents.keys())];
+// console.log(lastTime.pop());
+// console.log(lastTime[lastTime.length - 1]);
+console.log(
+  `An event happened, on average, every ${
+    lastTime[lastTime.length - 1] / gameEvents.size
+  } minutes`
+);
 // Task 4 :
 console.log('Task 4 :');
 for (const [key, value] of gameEvents) {
