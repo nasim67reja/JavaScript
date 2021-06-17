@@ -40,6 +40,8 @@ const secondIndex = concatTextIndex.indexOf('Love', firstIndex + 1);
 // lastIndexOf(searchValue , fromIndex)
 const lastIndex = concatTextIndex.lastIndexOf('Love');
 
+//  👉👉👉👉👉👉 1 .String.prototype.replace()
+console.log(concatTextIndex.replace(/Love/g, 'Like')); // regular expression  for details check website
 //  👉👉👉👉👉👉  .String.prototype.concat()
 // syntax : concat(str1) concat(str1, str2) concat(str1, str2, ... , strN)
 let concatText = firstTruth.concat(truth);
