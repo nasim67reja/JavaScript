@@ -40,6 +40,21 @@ const secondIndex = concatTextIndex.indexOf('Love', firstIndex + 1);
 // lastIndexOf(searchValue , fromIndex)
 const lastIndex = concatTextIndex.lastIndexOf('Love');
 
+//  👉👉👉👉👉👉 1 .String.prototype.replace()
+console.log(concatTextIndex.replace(/Love/g, 'Like')); // regular expression  for details check website
+
+//  👉👉👉👉👉👉 1 .String.prototype.slice()
+// The slice() method extracts a section of a string and returns it as a new string, without modifying the original string.
+console.log(concatTextIndex.slice(0, 12));
+
+//  👉👉👉👉👉👉  .String.prototype.split()
+// The split() method divides a String into an ordered list of substrings, puts these substrings into
+//  an array, and returns the array.  The division is done by searching for a pattern; where the pattern is
+//  provided as the first parameter in the method's call.
+console.log(truth.split(' '));
+// convert a string into an Array
+truth.split();
+
 //  👉👉👉👉👉👉  .String.prototype.concat()
 // syntax : concat(str1) concat(str1, str2) concat(str1, str2, ... , strN)
 let concatText = firstTruth.concat(truth);
@@ -70,6 +85,7 @@ truth.charAt(); // Returns 'I' by default charAt has a value of 0
 firstTruth.endsWith('Alla', 11); // Returns true
 firstTruth.endsWith('Allah'); // Returns true
 
+<<<<<<< HEAD
 //  👉👉👉👉👉👉 1 .String.prototype.charAt()
 //  👉👉👉👉👉👉 1 .String.prototype.charAt()
 //  👉👉👉👉👉👉 1 .String.prototype.charAt()
@@ -87,3 +103,23 @@ console.log(
 );
 console.log(allowedPlane('I have a gun for my own protection'));
 console.log(allowedPlane('I have socks and a water bottle'));
+=======
+//  👉👉👉👉👉👉 1 .String.prototype.trim()
+// The trim() method removes whitespace from both ends of a string. Whitespace in this context is all the whitespace
+//  characters (space, tab, no-break space, etc.) and all the line terminator characters (LF, CR, etc.).
+const greeting = '   Hello world!   ';
+
+console.log(greeting);
+// expected output: "   Hello world!   ";
+
+console.log(greeting.trim());
+// expected output: "Hello world!";
+// trimEnd() => Remove whitespace from End of the string
+//  trimStart() => Remove whiteSpace from start of the string
+//  👉👉👉👉👉👉 1 .String.prototype.valueOf()
+// The valueOf() method returns the primitive value of a String object.
+
+const testString = new String('Hello world !');
+console.log(typeof testString);
+console.log(typeof testString.valueOf());
+>>>>>>> 211bd8f06e3dd8c9d1147da1f81d1d26c77e47f5
