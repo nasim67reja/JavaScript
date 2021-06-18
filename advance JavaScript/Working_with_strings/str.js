@@ -74,3 +74,16 @@ firstTruth.endsWith('Allah'); // Returns true
 //  👉👉👉👉👉👉 1 .String.prototype.charAt()
 //  👉👉👉👉👉👉 1 .String.prototype.charAt()
 //  👉👉👉👉👉👉 1 .String.prototype.charAt()
+
+// Some String operation
+const allowedPlane = function (inform) {
+  let informv = inform.toLowerCase();
+  if (informv.includes('knife') || informv.includes('gun')) {
+    return 'The person is not allowed';
+  } else return 'The person is allowed for take off';
+};
+console.log(
+  allowedPlane('I have Knife , some food, coca cola and my cell phone')
+);
+console.log(allowedPlane('I have a gun for my own protection'));
+console.log(allowedPlane('I have socks and a water bottle'));
