@@ -5,11 +5,13 @@
 // The input will come from a textarea inserted into the DOM (see code below to
 // insert the elements), and conversion will happen when the button is pressed.
 // Test data (pasted to textarea, including spaces):
-// underscore_case;
-// first_name;
-// Some_Variable;
-// calculate_AGE;
-// delayed_departure;
+/*
+underscore_case;
+first_name;
+Some_Variable;
+calculate_AGE;
+delayed_departure;
+*/
 // underscore_case first_name Some_Variable calculate_AGE  delayed_departure
 // Should produce this output (5 separate console.log outputs):
 // underscoreCase ✅
@@ -36,7 +38,7 @@ button.addEventListener('click', function () {
   let arrStr = inputText.value.split('\n');
   let i = 1;
   for (const item of arrStr) {
-    console.log(`${returnCamelCase(item)} ${'✅'.repeat(i)}`);
+    console.log(`${returnCamelCase(item).padEnd(16)} ${'✅'.repeat(i)}`);
     i++;
   }
 });
