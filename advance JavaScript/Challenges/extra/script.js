@@ -13,13 +13,24 @@ for (const item of arrStr) {
     .replace(/\d+/, '')
     .replace(/\d+/, '');
   newStr += ')';
-
-  if (newStr.trim().startsWith('Delayed')) {
-    console.log(`🔴 ${newStr}`);
-  } else console.log(newStr);
-
-  //    console.log(newStr);
+  let tempVar = [];
+  for (const newItem of newStr.split(' ')) {
+    if (
+      newItem === 'fao' ||
+      newItem === 'txl' ||
+      newItem === 'bru' ||
+      newItem === 'hel' ||
+      newItem === 'lis'
+    )
+      tempVar.push(newItem.toUpperCase());
+    else tempVar.push(newItem);
+  }
+  let finalStr = tempVar.join(' ');
+  if (finalStr.trim().startsWith('Delayed')) {
+    console.log(`🔴 ${finalStr}`);
+  } else console.log(finalStr.padStart(45));
 }
+
 // 🔴 Delayed Departure from FAO to TXL (11h25)
 //              Arrival from BRU to FAO (11h45)
 //   🔴 Delayed Arrival from HEL to FAO (12h05)
