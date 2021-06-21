@@ -35,6 +35,5 @@ const openingHours = {
 // console.log(Object.values(openingHours));
 
 for (const day of Object.values(openingHours)) {
-  // console.log(day);
-  console.log(`${day}`);
+  console.log(day);
 }
