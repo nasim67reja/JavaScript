@@ -38,7 +38,6 @@ Higher-order functions are only possible because of the First-class function.
 */
 // Let’s take some examples to understand better:
 
-// Example 2: Functions returning another function.
 // Example 1 : functions takes function as an argument
 const lowerCaseAllWord = function (str) {
   return str.replace(/ /gi, '-').toLowerCase();
@@ -58,5 +57,34 @@ const makingWord = function (str, fn) {
 //   makingWord(
 //     'javascript is the best programming language in the world.',
 //     lowerCaseAllWord // here we don't call the function just specify the function as an argument
+//     // The function that we pass as an argument to another function is called the callback function.
 //   )
 // );
+//  ownExample//////////////////////////////////////////////////////////////////
+const pizzaPrice = function (quantity) {
+  return quantity * 250;
+};
+const burgerPrice = function (quantity) {
+  return quantity * 180;
+};
+
+const resturantBill = function (quantity, fn) {
+  // console.log(fn.name);
+  // console.log(fn.name === 'pizzaPrice');
+  return `You have ordered ${quantity} ${
+    fn.name == 'pizzaPrice' ? 'pizza' : 'burger'
+  } and\
+  Your total Bill is ${fn(quantity)} taka only.`;
+};
+// console.log(resturantBill(2, pizzaPrice));
+
+// Example 2: Functions returning another function.
+const greeting = function (greet) {
+  return function (name) {
+    return `${greet} ${name}`;
+  };
+};
+const greet = greeting('hey');
+console.log(greet('Nasim'));
+const greetings = greet => name => `${greet} ${name}`;
+console.log(greetings('Hi')('Nasim'));
