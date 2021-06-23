@@ -146,5 +146,12 @@ btn.addEventListener('click', user1.userInformation); // here bind is necessary 
 const studentFee = (fee, anualFee, cls) =>
   cls > 8 ? fee + anualFee + anualFee * 0.2 : fee + anualFee;
 const monthlyFeeOfStudent = studentFee.bind(null, 250, 120); // here null refers to this syntax
-console.log(monthlyFeeOfStudent(8)); //370
+// console.log(monthlyFeeOfStudent(8)); //370
 // console.log(studentFee(250, 120, 9)); // 394
+const addTax = function(rate){
+  return function(value){
+    return value+value*rate
+  }
+}
+const addTaxval = addTax(0.23)
+// console.log('the answer: ' + addTaxval(200));
