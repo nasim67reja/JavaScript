@@ -6,9 +6,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            background: linear-gradient(#00467f, #a5cc82);
+            min-height: 100vh;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 20px 30px;
+            font-size: 1.5rem;
+            color: white;
+            background-color: rgb(105, 36, 187);
+            border: none;
+            transition: all 0.1s ease-in-out;
+            letter-spacing: 2px;
+        }
+
+        .btn:hover {
+            cursor: pointer;
+            transform: translate(5px, -5px);
+        }
+    </style>
 </head>
 
 <body>
+    <div class="content">
+        <button class="btn">Click Me 👆</button>
+    </div>
     <script src="callapplybind.js"></script>
 </body>
 
