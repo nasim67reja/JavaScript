@@ -50,3 +50,36 @@ stndt.join(' - ');
 
 // 👉👉👉👉 7. Array.prototype.slice()
 /**/
+///////////////////////////////////////////////////////////////////////
+// you can found all the array method in mdn
+//////////////////////////////////////////////////////////////////////////
+/*The implementation and difference between for of and forEach are given below:*/
+// for of
+console.log('-----------for of loop-----------');
+for (const [id, name] of stndt.entries()) {
+  console.log(`id-${id + 1} : ${name.toUpperCase()}`);
+}
+// forEach
+console.log(`---------forEach----------`);
+stndt.forEach(function (studentName, index) {
+  console.log(`id-${index + 1} : ${studentName}`);
+});
+// for loop
+console.log('------------for Loop-------------');
+for (let i = 0; i < stndt.length; i++) {
+  console.log(`id-${i + 1} : ${stndt[i]}`);
+}
+// while loop
+console.log('--------------while loop--------------------');
+let i = 0;
+while (i < stndt.length) {
+  console.log(`id-${i + 1} : ${stndt[i]}`);
+  i++;
+}
+/////////////////////////////////////////////////////////////////////////
+/*forEach method: 
+forEach is higher order function and takes a callback function as an argument. where the argument will be each element of the targeted/specified array
+Array.prototype.forEach()
+The forEach() method executes a provided function once for each array element.
+
+*/
