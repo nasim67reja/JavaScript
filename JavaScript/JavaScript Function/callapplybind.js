@@ -6,8 +6,15 @@ function.apply(this,[argu1,argu2....,arguN])
 const variable = function.bind(this,argu1,....,arguN)
 the difference between call and bind , here in bind don't execute or call the function just return a function
 which ones you have to store in a variable as javascript has a first class function
-*/
 
+Well, ask yourself these questions:
+
+1. Do I need to store this function in a variable for later use? If so, use bind()
+
+2. Do I need to pass this function as an argument? If so, use bind()
+
+3. Do I need to call this function right now? If so, use call()
+*/
 // 👉👉👉👉👉 1.Call() method =========>>>>
 /*
 The call() method is a predefined javascript method. with call(), an object can use a method 
