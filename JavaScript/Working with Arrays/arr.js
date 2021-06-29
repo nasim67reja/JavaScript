@@ -83,3 +83,7 @@ Array.prototype.forEach()
 The forEach() method executes a provided function once for each array element.
 
 */
+/*Array.prototype.map()
+The map() method creates a new array populated with the results of calling a provided function on every element in the calling array.*/
+const oldAge = [20, 12, 32, 12, 41];
+const newAge = oldAge.map(age => age + 5);
