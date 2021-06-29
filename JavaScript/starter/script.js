@@ -75,35 +75,36 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
-
-
-// function displayMovements(movement){
-//   containerMovements.innerHTML = ''
-//   movement.forEach(function(value,index){
-//     const type = value>0? 'deposit':'withdrawal';
-//     const html = `
-//         <div class="movements__row">
-//           <div class="movements__type movements__type--${type}">${index+1} ${type}</div>
-//           <div class="movements__value">${value}</div>
-//         </div>
-//     `;
-//     containerMovements.insertAdjacentHTML('afterbegin',html)
-//   })
-// }
-// console.log(displayMovements(account1.movements));
+function displayMovements(movement) {
+  containerMovements.innerHTML = '';
+  movement.forEach(function (value, index) {
+    const type = value > 0 ? 'deposit' : 'withdrawal';
+    const html = `
+        <div class="movements__row">
+          <div class="movements__type movements__type--${type}">${
+      index + 1
+    } ${type}</div>
+          <div class="movements__value">${value}</div>
+        </div>
+    `;
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+}
+displayMovements(account1.movements);
 //////////////////////////////////////////////////////////////////////////////////
-// function displayMovements(movement){
+// function displayMovements(movement) {
 //   containerMovements.innerHTML = '';
-//   for(let [index,value] of movement){
-//     const type = value>0? 'deposit':'withdrawal';
+//   for (const [index, value] of movement.entries()) {
+//     const type = value > 0 ? 'deposit' : 'withdrawal';
 //     const html = `
-//         <div class="movements__row">
-//           <div class="movements__type movements__type--${type}">${index+1} ${type}</div>
-//           <div class="movements__value">${value}</div>
-//         </div>
-//     `;
-//     containerMovements.insertAdjacentHTML('afterbegin',html)
-//     console.log('tesing code');
+//             <div class="movements__row">
+//               <div class="movements__type movements__type--${type}">${
+//       index + 1
+//     } ${type}</div>
+//               <div class="movements__value">${value}</div>
+//             </div>
+//         `;
+//     containerMovements.insertAdjacentHTML('afterbegin', html);
 //   }
 // }
-// console.log(displayMovements(account1.movements));
+// displayMovements(account1.movements);
