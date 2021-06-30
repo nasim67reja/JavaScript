@@ -83,7 +83,83 @@ Array.prototype.forEach()
 The forEach() method executes a provided function once for each array element.
 
 */
-/*Array.prototype.map()
+/*👉👉👉👉👉👉Array.prototype.map()
 The map() method creates a new array populated with the results of calling a provided function on every element in the calling array.*/
 const oldAge = [20, 12, 32, 12, 41];
 const newAge = oldAge.map(age => age + 5);
+//👉👉👉👉👉👉 Array.prototype.filter()
+/* filter method return a array based on  a condition (which element filup the condtion are returned)
+here the delete the student from the array which names is startswith s and n*/
+
+// console.log(stndt);
+const removeArr = stndt.filter(
+  val => !val.startsWith('s') && !val.startsWith('n')
+);
+// console.log(removeArr);
+
+const regions = [
+  {
+    name: 'goa',
+    Population: 1000,
+  },
+  {
+    name: 'maharashtra',
+    population: 100000,
+  },
+  {
+    name: 'Kerala',
+    Population: 1000,
+  },
+  {
+    name: 'Delhi',
+    population: 100000,
+  },
+  {
+    name: 'Kolkata',
+    Population: 1000,
+  },
+  {
+    name: 'UP',
+    population: 100000,
+  },
+  {
+    name: 'Sikkim',
+    Population: 1000,
+  },
+  {
+    name: 'Ladakh',
+    population: 100000,
+  },
+];
+// const Covid_count = [
+const infected = [
+  {
+    name: 'Kolkata',
+    patients: 20,
+  },
+  {
+    name: 'UP',
+    patients: 100,
+  },
+  {
+    name: 'Sikkim',
+    patients: 10,
+  },
+  {
+    name: 'Ladakh',
+    patients: 10,
+  },
+];
+// const StateName = Covid_count.map(val => val.name);
+// console.log(StateName);
+
+// const containCovid = state.filter(val => !StateName.includes(val.name));
+// console.log(containCovid);
+
+const infectedRegions = infected.map(region => region.name);
+
+const safeRegions = regions
+  .filter(region => !infectedRegions.includes(region.name))
+  .map(region => region.name);
+
+console.log(safeRegions);

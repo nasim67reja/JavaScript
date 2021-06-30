@@ -103,9 +103,9 @@ function createUserName(acc) {
   });
 }
 createUserName(accounts);
-// console.log(accounts);
+// console.log(accounts); // check the accounts  before and after calling the function
 // console.log(account1);
-//////////////////////////////////////////////////////////////////////////////////
 const deposit = movements.filter(val => val > 0);
 const withdrawal = movements.filter(val => val < 0);
 console.log(movements, deposit, withdrawal);
+//////////////////////////////////////////////////////////////////////////////////
