@@ -74,11 +74,17 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+// / This function will help to display the total balance of a user
+function totalMoney(moneys) {
+  const allMoney = moneys.reduce((acc, crnt) => acc + crnt);
+  labelBalance.textContent = `${allMoney}Euro`;
+}
+totalMoney(movements);
 
+// This funtion Display the withdrawal and deposit moneys
 function displayMovements(movement) {
   containerMovements.innerHTML = '';
   movement.forEach(function (value, index) {
-    //for (const [index, value] of movement.entries()) // alternative of forEach method
     const type = value > 0 ? 'deposit' : 'withdrawal';
     const html = `
         <div class="movements__row">
@@ -93,6 +99,7 @@ function displayMovements(movement) {
 }
 displayMovements(account1.movements);
 
+// Create username property for all of the account object
 function createUserName(acc) {
   acc.forEach(useracc => {
     useracc.username = useracc.owner
@@ -103,9 +110,5 @@ function createUserName(acc) {
   });
 }
 createUserName(accounts);
-// console.log(accounts); // check the accounts  before and after calling the function
-// console.log(account1);
-const deposit = movements.filter(val => val > 0);
-const withdrawal = movements.filter(val => val < 0);
-console.log(movements, deposit, withdrawal);
+
 //////////////////////////////////////////////////////////////////////////////////

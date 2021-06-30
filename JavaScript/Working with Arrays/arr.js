@@ -111,6 +111,36 @@ The first time the callback is called, accumulator and currentValue can be one o
 Note: If initialValue is not provided, reduce() will execute the callback function starting at index 1, skipping the first index. If initialValue is provided, it will start at index 0.
 */
 //reduce((accumulator, currentValue, index, array) => { ... }, initialValue)
+function largeNum(numArr) {
+  return numArr.reduce((acc, crnt) => (acc > crnt ? acc : crnt));
+}
+console.log(largeNum([2, 3, 12, 1]));
+// console.log('%cseparator', 'color:white');
+// const newArr = [2, 31, 53, 12, 1, -1];
+// const largeN = newArr.reduce((acc, crnt) => {
+//   console.log(acc, crnt);
+//   if (acc > crnt) return crnt;
+//   else return acc;
+// });
+// console.log(largeN);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 const regions = [
   {
