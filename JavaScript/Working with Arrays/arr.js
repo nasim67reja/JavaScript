@@ -96,6 +96,21 @@ const removeArr = stndt.filter(
   val => !val.startsWith('s') && !val.startsWith('n')
 );
 // console.log(removeArr);
+//👉👉👉👉👉👉 Array.prototype.reduce()
+/*The reduce() method executes a reducer function (that you provide) on each element of the array, resulting in a single output value.
+
+The reducer function takes four arguments:
+
+Accumulator
+Current Value
+Current Index
+Source Array
+Your reducer function's returned value is assigned to the accumulator, whose value is remembered across each iteration throughout the array, and ultimately becomes the final, single resulting value.
+
+The first time the callback is called, accumulator and currentValue can be one of two values. If initialValue is provided in the call to reduce(), then accumulator will be equal to initialValue, and currentValue will be equal to the first value in the array. If no initialValue is provided, then accumulator will be equal to the first value in the array, and currentValue will be equal to the second.
+Note: If initialValue is not provided, reduce() will execute the callback function starting at index 1, skipping the first index. If initialValue is provided, it will start at index 0.
+*/
+//reduce((accumulator, currentValue, index, array) => { ... }, initialValue)
 
 const regions = [
   {
