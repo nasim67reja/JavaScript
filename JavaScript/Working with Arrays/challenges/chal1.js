@@ -24,7 +24,7 @@ Hints: Use tools from all lectures in this section so far �
 GOOD LUCK �*/
 
 function checkDogs(dogsJulia, dogskate) {
-  const remainDogJulia = dogsJulia.slice(1, dogsJulia.length - 1);
+  const remainDogJulia = dogsJulia.slice(1, dogsJulia.length - 2);
   const allDogs = [...remainDogJulia, ...dogskate];
   allDogs.forEach(function (dogAge, num) {
     let dogType = dogAge > 2 ? 'adult' : 'still a puppy';
@@ -35,3 +35,10 @@ function checkDogs(dogsJulia, dogskate) {
 }
 
 checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+console.log(
+  '\n%c---------------Check data two----------------\n',
+  "font-size:'100px'; background:white; color:black;"
+);
+checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
+// console.log('%c Test Data', "font-size:'32px'; background:red; color:blue;");
+/*The .slice method creates a shallow copy of the original array, but the .splice method modifies the original array. That's why we use the .slice method to modify a shallow copy of the array.*/

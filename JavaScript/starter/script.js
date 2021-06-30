@@ -78,6 +78,7 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 function displayMovements(movement) {
   containerMovements.innerHTML = '';
   movement.forEach(function (value, index) {
+    //for (const [index, value] of movement.entries()) // alternative of forEach method
     const type = value > 0 ? 'deposit' : 'withdrawal';
     const html = `
         <div class="movements__row">
@@ -91,20 +92,20 @@ function displayMovements(movement) {
   });
 }
 displayMovements(account1.movements);
+
+function createUserName(acc) {
+  acc.forEach(useracc => {
+    useracc.username = useracc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(val => val[0])
+      .join('');
+  });
+}
+createUserName(accounts);
+// console.log(accounts);
+// console.log(account1);
 //////////////////////////////////////////////////////////////////////////////////
-// function displayMovements(movement) {
-//   containerMovements.innerHTML = '';
-//   for (const [index, value] of movement.entries()) {
-//     const type = value > 0 ? 'deposit' : 'withdrawal';
-//     const html = `
-//             <div class="movements__row">
-//               <div class="movements__type movements__type--${type}">${
-//       index + 1
-//     } ${type}</div>
-//               <div class="movements__value">${value}</div>
-//             </div>
-//         `;
-//     containerMovements.insertAdjacentHTML('afterbegin', html);
-//   }
-// }
-// displayMovements(account1.movements);
+const deposit = movements.filter(val => val > 0);
+const withdrawal = movements.filter(val => val < 0);
+console.log(movements, deposit, withdrawal);
