@@ -127,7 +127,37 @@ console.log(largeNum([2, 3, 12, 1]));
 //
 //
 //
-//
+// Proper explaination of reduce method
+/*Using Jonas' equation:
+
+const ages = [10, 6];
+console.log(ages.reduce((acc, age) => acc + age, 0) / ages.length);
+ 
+Console:
+8
+Step-by-step:
+We declare the variable ages, and assign it an array of two values, 10 and 6.
+Inside the .log-method, we call the .reduce-method on our ages array. It will iterate two times, as we only have two values stored. acc starts as 0, as we set in the second argument of the method call. 
+1st iteration: 0 + 10 = 10, acc now equals 10
+2nd iteration: 10 + 6 = 16, acc now equals 16
+We reached the end of the array, so .reduce returns acc, which has the value 16.
+We divide 16 by the length of the ages array, which is 2. 16 / 2 is 8.
+We finally pass the value 8 as the parameter to the .log-method, which sequentially prints out to the console.
+Using your equation:
+const ages = [10, 6];
+console.log(ages.reduce(function(acc,age,i,arr){
+    return (acc + age)/(arr.length);
+},0));
+ Console: 
+5,5
+Step-by-step:
+
+We declare the variable ages, and assign it an array of two values, 10 and 6.
+Inside the .log-method, we call the .reduce-method on our ages array. It will iterate two times, as we only have two values stored. acc starts as 0, as we set in the second argument of the method call. 
+1st iteration: (0 + 10) / (2) = 10 / 2 = 5, acc now equals 5
+2nd iteration: (5 + 6) / (2) = 11 / 2 = 5,5, acc now equals 5,5
+We reached the end of the array, so .reduce returns acc, which has the value 5,5.
+We finally pass the value 5,5 as the parameter to the .log-method, which sequentially prints out to the console.*/
 //
 //
 //
