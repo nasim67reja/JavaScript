@@ -74,10 +74,11 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
 // / This function will help to display the total balance of a user
 function totalMoney(moneys) {
   const allMoney = moneys.reduce((acc, crnt) => acc + crnt);
-  labelBalance.textContent = `${allMoney}Euro`;
+  labelBalance.textContent = `${allMoney}€`;
 }
 totalMoney(movements);
 
@@ -91,13 +92,32 @@ function displayMovements(movement) {
           <div class="movements__type movements__type--${type}">${
       index + 1
     } ${type}</div>
-          <div class="movements__value">${value}</div>
+          <div class="movements__value">${value}€</div>
         </div>
     `;
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 }
 displayMovements(account1.movements);
+
+// This function will be display the summary
+function displaySummary(movement) {
+  const deposit = movement
+    .filter(mov => mov > 0)
+    .reduce((acc, crnt) => acc + crnt);
+  labelSumIn.textContent = `${deposit}€`;
+  const withdrawal = movement
+    .filter(mov => mov < 0)
+    .reduce((acc, crnt) => acc + crnt);
+  labelSumOut.textContent = `${Math.abs(withdrawal)}€`;
+  const interest = movement
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    // .reduce((acc, crnt) => acc + crnt);
+    .reduce((acc, crnt, i, arr) => (crnt >= 1 ? acc + crnt : acc + 0), 0);
+  labelSumInterest.textContent = `${interest}€`;
+}
+displaySummary(account1.movements);
 
 // Create username property for all of the account object
 function createUserName(acc) {
