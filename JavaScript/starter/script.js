@@ -83,6 +83,38 @@ function createUserName(acc) {
       .map(val => val[0])
       .join('');
   });
+<<<<<<< HEAD
+=======
+}
+createUserName(accounts);
+// Create eventhandler
+btnLogin.addEventListener('click', function (e) {
+  e.preventDefault();
+  const inputUserInfo = [inputLoginUsername.value, Number(inputLoginPin.value)];
+  const userNameArr = [];
+  const userPinArr = [];
+  const accountUserName = accounts.reduce((acc, crnt) => {
+    userNameArr.push(crnt.username);
+    userPinArr.push(crnt.pin);
+  }, 0);
+  if (
+    userNameArr.includes(inputUserInfo[0]) &&
+    userPinArr.includes(inputUserInfo[1])
+  ) {
+    containerApp.style.opacity = '1';
+    const accountNumber = accounts.find(
+      num => num.username === inputUserInfo[0]
+    );
+    displayMovements(accountNumber.movements);
+    displaySummary(accountNumber.movements);
+  }
+});
+
+// / This function will help to display the total balance of a user
+function totalMoney(moneys) {
+  const allMoney = moneys.reduce((acc, crnt) => acc + crnt);
+  labelBalance.textContent = `${allMoney}€`;
+>>>>>>> 4b500def41a3e9f7b9a0e92847e35d3005401321
 }
 createUserName(accounts);
 // Create eventhandler
@@ -156,7 +188,11 @@ function displayMovements(acc) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 }
+<<<<<<< HEAD
 // displayMovements(account4);
+=======
+// displayMovements(account1.movements);
+>>>>>>> 4b500def41a3e9f7b9a0e92847e35d3005401321
 
 // This function will be display the summary
 function displaySummary(acc) {
@@ -170,15 +206,27 @@ function displaySummary(acc) {
   labelSumOut.textContent = `${Math.abs(withdrawal)}€`;
   const interest = acc.movements
     .filter(mov => mov > 0)
+<<<<<<< HEAD
     .map(deposit => (deposit * acc.interestRate) / 100)
     .filter(int => int >= 1)
     .reduce((acc, int) => acc + int, 0);
+=======
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter(int => int >= 1)
+    // .reduce((acc, crnt) => acc + crnt);
+    .reduce((acc, int) => acc + int, 0);
+  console.log(interest);
+>>>>>>> 4b500def41a3e9f7b9a0e92847e35d3005401321
   labelSumInterest.textContent = `${interest}€`;
   const totalMoney = deposit + withdrawal;
   labelBalance.textContent = `${totalMoney}€`;
   labelWelcome.textContent = `Welcome back, ${acc.owner.split(' ')[0]}`;
 }
+<<<<<<< HEAD
 // displaySummary(account4);
+=======
+// displaySummary(account4.movements);
+>>>>>>> 4b500def41a3e9f7b9a0e92847e35d3005401321
 
 //////////////////////////////////////////////////////////////////////////////////
 // const targetName = 'Jonas Schmedtmann';
@@ -189,9 +237,12 @@ function displaySummary(acc) {
 //   if (item.owner === targetName) console.log(item);
 //   break;
 // }
+<<<<<<< HEAD
 // / This function will help to display the total balance of a user
 // function totalMoney(moneys) {
 //   const allMoney = moneys.reduce((acc, crnt) => acc + crnt);
 //   labelBalance.textContent = `${allMoney}€`;
 // }
 // totalMoney(movements);
+=======
+>>>>>>> 4b500def41a3e9f7b9a0e92847e35d3005401321

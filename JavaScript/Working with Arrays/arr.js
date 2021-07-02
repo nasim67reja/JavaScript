@@ -96,6 +96,13 @@ const removeArr = stndt.filter(
   val => !val.startsWith('s') && !val.startsWith('n')
 );
 // console.log(removeArr);
+// 👉👉👉👉 5. Array.prototype.find()
+/*The find() method returns the value of the first element in the provided array that satisfies the provided testing function. If no values satisfy the testing function, undefined is returned.
+This is very important method to find something see the practical exam in the bankist project */
+const newArr1 = [1, 23, 4, 3, 12, -12, -1, -2, -4, 21, 14, 51];
+const firstNegativeNum = newArr1.find(num => num < 0);
+console.log(`The first negative number is :`, firstNegativeNum);
+
 //👉👉👉👉👉👉 Array.prototype.reduce()
 /*The reduce() method executes a reducer function (that you provide) on each element of the array, resulting in a single output value.
 
