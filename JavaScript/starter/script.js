@@ -83,8 +83,6 @@ function createUserName(acc) {
       .map(val => val[0])
       .join('');
   });
-<<<<<<< HEAD
-=======
 }
 createUserName(accounts);
 // Create eventhandler
@@ -114,7 +112,6 @@ btnLogin.addEventListener('click', function (e) {
 function totalMoney(moneys) {
   const allMoney = moneys.reduce((acc, crnt) => acc + crnt);
   labelBalance.textContent = `${allMoney}€`;
->>>>>>> 4b500def41a3e9f7b9a0e92847e35d3005401321
 }
 createUserName(accounts);
 // Create eventhandler
@@ -143,34 +140,6 @@ btnLogin.addEventListener('click', function (e) {
     displaySummary(accountNumber);
   }
 });
-/*this is jonas btn handler funtion
-let currentAccount;
-
-btnLogin.addEventListener('click', function (e) {
-  // Prevent form from submitting
-  e.preventDefault();
-
-  currentAccount = accounts.find(
-    acc => acc.username === inputLoginUsername.value
-  );
-  console.log(currentAccount);
-
-  if (currentAccount?.pin === Number(inputLoginPin.value)) {
-    // Display UI and message
-    labelWelcome.textContent = `Welcome back, ${
-      currentAccount.owner.split(' ')[0]
-    }`;
-    containerApp.style.opacity = 100;
-
-    // Clear input fields
-    inputLoginUsername.value = inputLoginPin.value = '';
-    inputLoginPin.blur();
-
-    // Update UI
-    updateUI(currentAccount);
-  }
-});
-*/
 
 // This funtion Display the withdrawal and deposit moneys
 function displayMovements(acc) {
@@ -188,11 +157,6 @@ function displayMovements(acc) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 }
-<<<<<<< HEAD
-// displayMovements(account4);
-=======
-// displayMovements(account1.movements);
->>>>>>> 4b500def41a3e9f7b9a0e92847e35d3005401321
 
 // This function will be display the summary
 function displaySummary(acc) {
@@ -205,44 +169,15 @@ function displaySummary(acc) {
     .reduce((acc, crnt) => acc + crnt, 0);
   labelSumOut.textContent = `${Math.abs(withdrawal)}€`;
   const interest = acc.movements
-    .filter(mov => mov > 0)
-<<<<<<< HEAD
-    .map(deposit => (deposit * acc.interestRate) / 100)
-    .filter(int => int >= 1)
-    .reduce((acc, int) => acc + int, 0);
-=======
-    .map(deposit => (deposit * 1.2) / 100)
-    .filter(int => int >= 1)
-    // .reduce((acc, crnt) => acc + crnt);
-    .reduce((acc, int) => acc + int, 0);
-  console.log(interest);
->>>>>>> 4b500def41a3e9f7b9a0e92847e35d3005401321
+    .filter(deposit => deposit > 0)
+    .map(depint => (depint * acc.interestRate) / 100)
+    .filter(abv => abv > 1)
+    .reduce((acc, crnt) => acc + crnt);
+
   labelSumInterest.textContent = `${interest}€`;
   const totalMoney = deposit + withdrawal;
   labelBalance.textContent = `${totalMoney}€`;
   labelWelcome.textContent = `Welcome back, ${acc.owner.split(' ')[0]}`;
 }
-<<<<<<< HEAD
-// displaySummary(account4);
-=======
-// displaySummary(account4.movements);
->>>>>>> 4b500def41a3e9f7b9a0e92847e35d3005401321
 
 //////////////////////////////////////////////////////////////////////////////////
-// const targetName = 'Jonas Schmedtmann';
-// const findName = accounts.filter(acc => acc.owner === targetName);
-// console.log(findName);
-// //  alternative with for of loop
-// for (const item of accounts) {
-//   if (item.owner === targetName) console.log(item);
-//   break;
-// }
-<<<<<<< HEAD
-// / This function will help to display the total balance of a user
-// function totalMoney(moneys) {
-//   const allMoney = moneys.reduce((acc, crnt) => acc + crnt);
-//   labelBalance.textContent = `${allMoney}€`;
-// }
-// totalMoney(movements);
-=======
->>>>>>> 4b500def41a3e9f7b9a0e92847e35d3005401321
