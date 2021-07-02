@@ -103,7 +103,6 @@ btnLogin.addEventListener('click', function (e) {
     const accountNumber = accounts.find(
       num => num.username === inputUserInfo[0]
     );
-    // console.log(accountNumber);
     displayMovements(accountNumber.movements);
     displaySummary(accountNumber.movements);
   }
@@ -138,20 +137,22 @@ function displayMovements(movement) {
 function displaySummary(movement) {
   const deposit = movement
     .filter(mov => mov > 0)
-    .reduce((acc, crnt) => acc + crnt);
+    .reduce((acc, crnt) => acc + crnt, 0);
   labelSumIn.textContent = `${deposit}€`;
   const withdrawal = movement
     .filter(mov => mov < 0)
-    .reduce((acc, crnt) => acc + crnt);
+    .reduce((acc, crnt) => acc + crnt, 0);
   labelSumOut.textContent = `${Math.abs(withdrawal)}€`;
   const interest = movement
     .filter(mov => mov > 0)
     .map(deposit => (deposit * 1.2) / 100)
+    .filter(int => int >= 1)
     // .reduce((acc, crnt) => acc + crnt);
-    .reduce((acc, crnt, i, arr) => (crnt >= 1 ? acc + crnt : acc + 0), 0);
+    .reduce((acc, int) => acc + int, 0);
+  console.log(interest);
   labelSumInterest.textContent = `${interest}€`;
 }
-// displaySummary(account1.movements);
+// displaySummary(account4.movements);
 
 //////////////////////////////////////////////////////////////////////////////////
 // const targetName = 'Jonas Schmedtmann';
