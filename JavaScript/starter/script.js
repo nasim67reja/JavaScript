@@ -74,6 +74,40 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+// Create username property for all of the account object
+function createUserName(acc) {
+  acc.forEach(useracc => {
+    useracc.username = useracc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(val => val[0])
+      .join('');
+  });
+}
+createUserName(accounts);
+// Create eventhandler
+btnLogin.addEventListener('click', function (e) {
+  e.preventDefault();
+  const inputUserInfo = [inputLoginUsername.value, Number(inputLoginPin.value)];
+  const userNameArr = [];
+  const userPinArr = [];
+  const accountUserName = accounts.reduce((acc, crnt) => {
+    userNameArr.push(crnt.username);
+    userPinArr.push(crnt.pin);
+  }, 0);
+  if (
+    userNameArr.includes(inputUserInfo[0]) &&
+    userPinArr.includes(inputUserInfo[1])
+  ) {
+    containerApp.style.opacity = '1';
+    const accountNumber = accounts.find(
+      num => num.username === inputUserInfo[0]
+    );
+    // console.log(accountNumber);
+    displayMovements(accountNumber.movements);
+    displaySummary(accountNumber.movements);
+  }
+});
 
 // / This function will help to display the total balance of a user
 function totalMoney(moneys) {
@@ -98,7 +132,7 @@ function displayMovements(movement) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 }
-displayMovements(account1.movements);
+// displayMovements(account1.movements);
 
 // This function will be display the summary
 function displaySummary(movement) {
@@ -117,18 +151,14 @@ function displaySummary(movement) {
     .reduce((acc, crnt, i, arr) => (crnt >= 1 ? acc + crnt : acc + 0), 0);
   labelSumInterest.textContent = `${interest}€`;
 }
-displaySummary(account1.movements);
-
-// Create username property for all of the account object
-function createUserName(acc) {
-  acc.forEach(useracc => {
-    useracc.username = useracc.owner
-      .toLowerCase()
-      .split(' ')
-      .map(val => val[0])
-      .join('');
-  });
-}
-createUserName(accounts);
+// displaySummary(account1.movements);
 
 //////////////////////////////////////////////////////////////////////////////////
+// const targetName = 'Jonas Schmedtmann';
+// const findName = accounts.filter(acc => acc.owner === targetName);
+// console.log(findName);
+// //  alternative with for of loop
+// for (const item of accounts) {
+//   if (item.owner === targetName) console.log(item);
+//   break;
+// }
