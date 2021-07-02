@@ -103,22 +103,15 @@ btnLogin.addEventListener('click', function (e) {
     const accountNumber = accounts.find(
       num => num.username === inputUserInfo[0]
     );
-    displayMovements(accountNumber.movements);
-    displaySummary(accountNumber.movements);
+    displayMovements(accountNumber);
+    displaySummary(accountNumber);
   }
 });
 
-// / This function will help to display the total balance of a user
-function totalMoney(moneys) {
-  const allMoney = moneys.reduce((acc, crnt) => acc + crnt);
-  labelBalance.textContent = `${allMoney}€`;
-}
-totalMoney(movements);
-
 // This funtion Display the withdrawal and deposit moneys
-function displayMovements(movement) {
+function displayMovements(acc) {
   containerMovements.innerHTML = '';
-  movement.forEach(function (value, index) {
+  acc.movements.forEach(function (value, index) {
     const type = value > 0 ? 'deposit' : 'withdrawal';
     const html = `
         <div class="movements__row">
@@ -131,28 +124,29 @@ function displayMovements(movement) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 }
-// displayMovements(account1.movements);
+// displayMovements(account4);
 
 // This function will be display the summary
-function displaySummary(movement) {
-  const deposit = movement
+function displaySummary(acc) {
+  const deposit = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, crnt) => acc + crnt, 0);
   labelSumIn.textContent = `${deposit}€`;
-  const withdrawal = movement
+  const withdrawal = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, crnt) => acc + crnt, 0);
   labelSumOut.textContent = `${Math.abs(withdrawal)}€`;
-  const interest = movement
+  const interest = acc.movements
     .filter(mov => mov > 0)
-    .map(deposit => (deposit * 1.2) / 100)
+    .map(deposit => (deposit * acc.interestRate) / 100)
     .filter(int => int >= 1)
-    // .reduce((acc, crnt) => acc + crnt);
     .reduce((acc, int) => acc + int, 0);
-  console.log(interest);
   labelSumInterest.textContent = `${interest}€`;
+  const totalMoney = deposit + withdrawal;
+  labelBalance.textContent = `${totalMoney}€`;
+  labelWelcome.textContent = `Welcome back, ${acc.owner.split(' ')[0]}`;
 }
-// displaySummary(account4.movements);
+// displaySummary(account4);
 
 //////////////////////////////////////////////////////////////////////////////////
 // const targetName = 'Jonas Schmedtmann';
@@ -163,3 +157,9 @@ function displaySummary(movement) {
 //   if (item.owner === targetName) console.log(item);
 //   break;
 // }
+// / This function will help to display the total balance of a user
+// function totalMoney(moneys) {
+//   const allMoney = moneys.reduce((acc, crnt) => acc + crnt);
+//   labelBalance.textContent = `${allMoney}€`;
+// }
+// totalMoney(movements);
