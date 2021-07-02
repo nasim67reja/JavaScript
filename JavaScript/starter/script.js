@@ -91,11 +91,12 @@ createUserName(accounts);
 createUserName(accounts);
 // Create eventhandler
 let currentNumber;
+const userNameArr = [];
+const userPinArr = [];
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
   const inputUserInfo = [inputLoginUsername.value, Number(inputLoginPin.value)];
-  const userNameArr = [];
-  const userPinArr = [];
+
   const accountUserName = accounts.reduce((acc, crnt) => {
     userNameArr.push(crnt.username);
     userPinArr.push(crnt.pin);
@@ -176,4 +177,21 @@ btnTransfer.addEventListener('click', function (e) {
 
   inputTransferTo.value = inputTransferAmount.value = '';
   inputTransferAmount.blur();
+});
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+  const closeUserName = inputCloseUsername.value;
+  const closeUserPin = inputClosePin.value;
+
+  if (
+    userNameArr.includes(closeUserName) &&
+    userPinArr.includes(Number(closeUserPin))
+  ) {
+    const nameIndex = accounts.findIndex(ind => ind.username === closeUserName);
+    accounts.splice(nameIndex, nameIndex + 1);
+    // console.log(nameIndex);
+  }
+  inputCloseUsername.value = inputClosePin.value = '';
+  inputClosePin.blur();
 });

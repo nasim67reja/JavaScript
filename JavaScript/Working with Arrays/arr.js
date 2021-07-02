@@ -102,6 +102,11 @@ This is very important method to find something see the practical exam in the ba
 const newArr1 = [1, 23, 4, 3, 12, -12, -1, -2, -4, 21, 14, 51];
 const firstNegativeNum = newArr1.find(num => num < 0);
 console.log(`The first negative number is :`, firstNegativeNum);
+//👉👉👉👉👉👉 Array.prototype.findIndex()
+/*The findIndex() method returns the index of the first element in the array that satisfies the provided testing function. Otherwise, it returns -1, indicating that no element passed the test.*/
+const arr = [2, 3, 4, 1, 12, 2, 42];
+const isLargeNumber = arr.findIndex(num => num % 2 === 1);
+// console.log(isLargeNumber);
 
 //👉👉👉👉👉👉 Array.prototype.reduce()
 /*The reduce() method executes a reducer function (that you provide) on each element of the array, resulting in a single output value.
