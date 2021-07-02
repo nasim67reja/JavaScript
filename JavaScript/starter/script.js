@@ -101,6 +101,7 @@ btnLogin.addEventListener('click', function (e) {
     userNameArr.push(crnt.username);
     userPinArr.push(crnt.pin);
   }, 0);
+  console.log(userNameArr);
   if (
     userNameArr.includes(inputUserInfo[0]) &&
     userPinArr.includes(inputUserInfo[1])
@@ -185,12 +186,18 @@ btnClose.addEventListener('click', function (e) {
   const closeUserPin = inputClosePin.value;
 
   if (
-    userNameArr.includes(closeUserName) &&
-    userPinArr.includes(Number(closeUserPin))
+    currentNumber.username === closeUserName &&
+    currentNumber.pin === Number(closeUserPin)
   ) {
     const nameIndex = accounts.findIndex(ind => ind.username === closeUserName);
-    accounts.splice(nameIndex, nameIndex + 1);
-    // console.log(nameIndex);
+    accounts.splice(nameIndex, 1);
+    userNameArr.splice(nameIndex, 1);
+    console.log(userNameArr);
+
+    containerApp.style.opacity = '0';
+    labelWelcome.textContent = 'Log in to get started';
+    console.log(nameIndex);
+    console.log(accounts);
   }
   inputCloseUsername.value = inputClosePin.value = '';
   inputClosePin.blur();
