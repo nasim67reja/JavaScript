@@ -85,36 +85,12 @@ function createUserName(acc) {
   });
 }
 createUserName(accounts);
-// Create eventhandler
-btnLogin.addEventListener('click', function (e) {
-  e.preventDefault();
-  const inputUserInfo = [inputLoginUsername.value, Number(inputLoginPin.value)];
-  const userNameArr = [];
-  const userPinArr = [];
-  const accountUserName = accounts.reduce((acc, crnt) => {
-    userNameArr.push(crnt.username);
-    userPinArr.push(crnt.pin);
-  }, 0);
-  if (
-    userNameArr.includes(inputUserInfo[0]) &&
-    userPinArr.includes(inputUserInfo[1])
-  ) {
-    containerApp.style.opacity = '1';
-    const accountNumber = accounts.find(
-      num => num.username === inputUserInfo[0]
-    );
-    displayMovements(accountNumber.movements);
-    displaySummary(accountNumber.movements);
-  }
-});
 
 // / This function will help to display the total balance of a user
-function totalMoney(moneys) {
-  const allMoney = moneys.reduce((acc, crnt) => acc + crnt);
-  labelBalance.textContent = `${allMoney}€`;
-}
+
 createUserName(accounts);
 // Create eventhandler
+let currentNumber;
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
   const inputUserInfo = [inputLoginUsername.value, Number(inputLoginPin.value)];
@@ -131,13 +107,11 @@ btnLogin.addEventListener('click', function (e) {
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
-
+    currentNumber = accounts.find(num => num.username === inputUserInfo[0]);
     containerApp.style.opacity = '1';
-    const accountNumber = accounts.find(
-      num => num.username === inputUserInfo[0]
-    );
-    displayMovements(accountNumber);
-    displaySummary(accountNumber);
+    displayMovements(currentNumber);
+    displaySummary(currentNumber);
+    // console.log(currentNumber);
   }
 });
 
@@ -159,6 +133,7 @@ function displayMovements(acc) {
 }
 
 // This function will be display the summary
+let totalMoney;
 function displaySummary(acc) {
   const deposit = acc.movements
     .filter(mov => mov > 0)
@@ -175,9 +150,30 @@ function displaySummary(acc) {
     .reduce((acc, crnt) => acc + crnt);
 
   labelSumInterest.textContent = `${interest}€`;
-  const totalMoney = deposit + withdrawal;
+  totalMoney = deposit + withdrawal;
   labelBalance.textContent = `${totalMoney}€`;
   labelWelcome.textContent = `Welcome back, ${acc.owner.split(' ')[0]}`;
 }
-
 //////////////////////////////////////////////////////////////////////////////////
+// transfer money
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const transferAmount = Number(inputTransferAmount.value);
+  const receieveAccount = accounts.find(
+    num => num.username === inputTransferTo.value
+  );
+  if (
+    transferAmount > 0 &&
+    transferAmount <= totalMoney &&
+    receieveAccount &&
+    receieveAccount.username !== currentNumber.username
+  ) {
+    receieveAccount.movements.push(transferAmount);
+    currentNumber.movements.push(-transferAmount);
+    displayMovements(currentNumber);
+    displaySummary(currentNumber);
+  }
+
+  inputTransferTo.value = inputTransferAmount.value = '';
+  inputTransferAmount.blur();
+});
