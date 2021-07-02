@@ -103,13 +103,11 @@ btnLogin.addEventListener('click', function (e) {
     const accountNumber = accounts.find(
       num => num.username === inputUserInfo[0]
     );
-    displayMovements(accountNumber);
-    displaySummary(accountNumber);
+    displayMovements(accountNumber.movements);
+    displaySummary(accountNumber.movements);
   }
 });
 
-<<<<<<< HEAD
-=======
 // / This function will help to display the total balance of a user
 function totalMoney(moneys) {
   const allMoney = moneys.reduce((acc, crnt) => acc + crnt);
@@ -143,7 +141,6 @@ btnLogin.addEventListener('click', function (e) {
   }
 });
 
->>>>>>> a9be3d42734fde541bc491bf20276431e96026d0
 // This funtion Display the withdrawal and deposit moneys
 function displayMovements(acc) {
   containerMovements.innerHTML = '';
@@ -160,10 +157,6 @@ function displayMovements(acc) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 }
-<<<<<<< HEAD
-// displayMovements(account4);
-=======
->>>>>>> a9be3d42734fde541bc491bf20276431e96026d0
 
 // This function will be display the summary
 function displaySummary(acc) {
@@ -176,42 +169,15 @@ function displaySummary(acc) {
     .reduce((acc, crnt) => acc + crnt, 0);
   labelSumOut.textContent = `${Math.abs(withdrawal)}€`;
   const interest = acc.movements
-<<<<<<< HEAD
-    .filter(mov => mov > 0)
-    .map(deposit => (deposit * acc.interestRate) / 100)
-    .filter(int => int >= 1)
-    .reduce((acc, int) => acc + int, 0);
-=======
     .filter(deposit => deposit > 0)
     .map(depint => (depint * acc.interestRate) / 100)
     .filter(abv => abv > 1)
     .reduce((acc, crnt) => acc + crnt);
 
->>>>>>> a9be3d42734fde541bc491bf20276431e96026d0
   labelSumInterest.textContent = `${interest}€`;
   const totalMoney = deposit + withdrawal;
   labelBalance.textContent = `${totalMoney}€`;
   labelWelcome.textContent = `Welcome back, ${acc.owner.split(' ')[0]}`;
 }
-<<<<<<< HEAD
-// displaySummary(account4);
 
 //////////////////////////////////////////////////////////////////////////////////
-// const targetName = 'Jonas Schmedtmann';
-// const findName = accounts.filter(acc => acc.owner === targetName);
-// console.log(findName);
-// //  alternative with for of loop
-// for (const item of accounts) {
-//   if (item.owner === targetName) console.log(item);
-//   break;
-// }
-// / This function will help to display the total balance of a user
-// function totalMoney(moneys) {
-//   const allMoney = moneys.reduce((acc, crnt) => acc + crnt);
-//   labelBalance.textContent = `${allMoney}€`;
-// }
-// totalMoney(movements);
-=======
-
-//////////////////////////////////////////////////////////////////////////////////
->>>>>>> a9be3d42734fde541bc491bf20276431e96026d0
