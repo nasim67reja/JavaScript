@@ -86,34 +86,24 @@ function createUserName(acc) {
 }
 createUserName(accounts);
 
-// / This function will help to display the total balance of a user
-
-createUserName(accounts);
-// Create eventhandler
+// Create eventhandler for log in button
 let currentNumber;
-const userNameArr = [];
-const userPinArr = [];
+
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
   const inputUserInfo = [inputLoginUsername.value, Number(inputLoginPin.value)];
-
-  const accountUserName = accounts.reduce((acc, crnt) => {
-    userNameArr.push(crnt.username);
-    userPinArr.push(crnt.pin);
-  }, 0);
-  console.log(userNameArr);
+  currentNumber = accounts.find(num => num.username === inputUserInfo[0]);
   if (
-    userNameArr.includes(inputUserInfo[0]) &&
-    userPinArr.includes(inputUserInfo[1])
+    currentNumber &&
+    currentNumber.username === inputUserInfo[0] &&
+    currentNumber.pin === inputUserInfo[1]
   ) {
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
-    currentNumber = accounts.find(num => num.username === inputUserInfo[0]);
     containerApp.style.opacity = '1';
     displayMovements(currentNumber);
     displaySummary(currentNumber);
-    // console.log(currentNumber);
   }
 });
 
@@ -134,7 +124,7 @@ function displayMovements(acc) {
   });
 }
 
-// This function will be display the summary
+// This function will be display the summary,titel & total money
 let totalMoney;
 function displaySummary(acc) {
   const deposit = acc.movements
@@ -157,7 +147,7 @@ function displaySummary(acc) {
   labelWelcome.textContent = `Welcome back, ${acc.owner.split(' ')[0]}`;
 }
 //////////////////////////////////////////////////////////////////////////////////
-// transfer money
+// transfer money button handler funtion
 btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
   const transferAmount = Number(inputTransferAmount.value);
@@ -179,7 +169,7 @@ btnTransfer.addEventListener('click', function (e) {
   inputTransferTo.value = inputTransferAmount.value = '';
   inputTransferAmount.blur();
 });
-
+// close account btn handler funtion =>
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
   const closeUserName = inputCloseUsername.value;
@@ -191,13 +181,9 @@ btnClose.addEventListener('click', function (e) {
   ) {
     const nameIndex = accounts.findIndex(ind => ind.username === closeUserName);
     accounts.splice(nameIndex, 1);
-    userNameArr.splice(nameIndex, 1);
-    console.log(userNameArr);
-
+    // display UI after deleting an account
     containerApp.style.opacity = '0';
     labelWelcome.textContent = 'Log in to get started';
-    console.log(nameIndex);
-    console.log(accounts);
   }
   inputCloseUsername.value = inputClosePin.value = '';
   inputClosePin.blur();
