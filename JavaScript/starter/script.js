@@ -98,13 +98,13 @@ btnLogin.addEventListener('click', function (e) {
     currentNumber.username === inputUserInfo[0] &&
     currentNumber.pin === inputUserInfo[1]
   ) {
-    // Clear input fields
-    inputLoginUsername.value = inputLoginPin.value = '';
-    inputLoginPin.blur();
     containerApp.style.opacity = '1';
     displayMovements(currentNumber);
     displaySummary(currentNumber);
   }
+  // Clear input fields
+  inputLoginUsername.value = inputLoginPin.value = '';
+  inputLoginPin.blur();
 });
 
 // This funtion Display the withdrawal and deposit moneys
@@ -169,6 +169,18 @@ btnTransfer.addEventListener('click', function (e) {
   inputTransferTo.value = inputTransferAmount.value = '';
   inputTransferAmount.blur();
 });
+// Request loan button handler function=>
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputLoanAmount.value);
+  if (amount > 0 && currentNumber.movements.some(mov => mov > amount * 0.1)) {
+    currentNumber.movements.push(amount);
+    displayMovements(currentNumber);
+    displaySummary(currentNumber);
+  }
+  inputLoanAmount.value = '';
+  inputLoanAmount.blur();
+});
 // close account btn handler funtion =>
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
@@ -188,3 +200,21 @@ btnClose.addEventListener('click', function (e) {
   inputCloseUsername.value = inputClosePin.value = '';
   inputClosePin.blur();
 });
+
+// flat() method=>
+// const arr2 = [1, 2, [3, 4]];
+// console.log(arr2.flat());
+// const arr3 = [1, 2, 3, [4, 5, 6, [7, 8]]];
+// console.log(arr3, arr3.flat(), arr3.flat(2));
+// this is how the flat method works in javascript
+// let's see another example
+const allBankMoney = accounts
+  .map(mov => mov.movements)
+  .flat()
+  .reduce((acc, crnt) => acc + crnt);
+console.log(allBankMoney);
+const allBankMoney2 = accounts
+  .flatMap(mov => mov.movements)
+  .reduce((acc, crnt) => acc + crnt);
+console.log(allBankMoney2); // remember that flatMap method goes only one level deep
+console.log('a' > 'A');
