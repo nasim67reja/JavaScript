@@ -55,25 +55,25 @@ stndt.join(' - ');
 //////////////////////////////////////////////////////////////////////////
 /*The implementation and difference between for of and forEach are given below:*/
 // for of
-console.log('-----------for of loop-----------');
+// console.log('-----------for of loop-----------');
 for (const [id, name] of stndt.entries()) {
-  console.log(`id-${id + 1} : ${name.toUpperCase()}`);
+  // console.log(`id-${id + 1} : ${name.toUpperCase()}`);
 }
 // forEach
-console.log(`---------forEach----------`);
+// console.log(`---------forEach----------`);
 stndt.forEach(function (studentName, index) {
-  console.log(`id-${index + 1} : ${studentName}`);
+  // console.log(`id-${index + 1} : ${studentName}`);
 });
 // for loop
-console.log('------------for Loop-------------');
+// console.log('------------for Loop-------------');
 for (let i = 0; i < stndt.length; i++) {
-  console.log(`id-${i + 1} : ${stndt[i]}`);
+  // console.log(`id-${i + 1} : ${stndt[i]}`);
 }
 // while loop
-console.log('--------------while loop--------------------');
+// console.log('--------------while loop--------------------');
 let i = 0;
 while (i < stndt.length) {
-  console.log(`id-${i + 1} : ${stndt[i]}`);
+  // console.log(`id-${i + 1} : ${stndt[i]}`);
   i++;
 }
 /////////////////////////////////////////////////////////////////////////
@@ -101,7 +101,7 @@ const removeArr = stndt.filter(
 This is very important method to find something see the practical exam in the bankist project */
 const newArr1 = [1, 23, 4, 3, 12, -12, -1, -2, -4, 21, 14, 51];
 const firstNegativeNum = newArr1.find(num => num < 0);
-console.log(`The first negative number is :`, firstNegativeNum);
+// console.log(`The first negative number is :`, firstNegativeNum);
 
 //👉👉👉👉👉👉 Array.prototype.reduce()
 /*The reduce() method executes a reducer function (that you provide) on each element of the array, resulting in a single output value.
@@ -121,7 +121,7 @@ Note: If initialValue is not provided, reduce() will execute the callback functi
 function largeNum(numArr) {
   return numArr.reduce((acc, crnt) => (acc > crnt ? acc : crnt));
 }
-console.log(largeNum([2, 3, 12, 1]));
+// console.log(largeNum([2, 3, 12, 1]));
 // console.log('%cseparator', 'color:white');
 // const newArr = [2, 31, 53, 12, 1, -1];
 // const largeN = newArr.reduce((acc, crnt) => {
@@ -253,6 +253,13 @@ Second: no, the numbers are taken as they are, not the absolut values. So in cas
 //
 //
 //
+// fill() method
+const arr3 = new Array(5); // here arr3 will be empty  with 5 element
+const fillArr3 = arr3.fill(2, 3); // it's work like slice method here (first,second,third) first argument will be the element and first is start index and third is end index last two argument is optional
+// 😋😋😋😋 fill() method works also with containing element array
+const arr4 = [1, 2, 3, 4, 5];
+console.log(arr4.fill(2, 2));
+
 //
 //
 //
