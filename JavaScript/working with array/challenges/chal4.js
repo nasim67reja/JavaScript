@@ -54,3 +54,14 @@ const eatResult =
     ? `Sarah's dog eat too much`
     : `Sarah's dog eat too little`;
 console.log(eatResult);
+
+const ownersEatTooMuch = dogs
+  .filter(dog => dog.curFood > dog.recommendedFood)
+  .map(owner => owner.owners)
+  .flat();
+console.log(ownersEatTooMuch);
+const ownersEatTooLittle = dogs
+  .filter(dog => dog.curFood < dog.recommendedFood)
+  .map(owner => owner.owners)
+  .flat();
+console.log(ownersEatTooLittle);
