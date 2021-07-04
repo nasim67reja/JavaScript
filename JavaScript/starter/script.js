@@ -90,6 +90,7 @@ createUserName(accounts);
 let currentNumber;
 
 btnLogin.addEventListener('click', function (e) {
+  sorted = false;
   e.preventDefault();
   const inputUserInfo = [inputLoginUsername.value, Number(inputLoginPin.value)];
   currentNumber = accounts.find(num => num.username === inputUserInfo[0]);
@@ -108,9 +109,12 @@ btnLogin.addEventListener('click', function (e) {
 });
 
 // This funtion Display the withdrawal and deposit moneys
-function displayMovements(acc) {
+function displayMovements(acc, sort = false) {
   containerMovements.innerHTML = '';
-  acc.movements.forEach(function (value, index) {
+  const mov = sort
+    ? acc.movements.slice().sort((a, b) => a - b)
+    : acc.movements;
+  mov.forEach(function (value, index) {
     const type = value > 0 ? 'deposit' : 'withdrawal';
     const html = `
         <div class="movements__row">
@@ -123,6 +127,13 @@ function displayMovements(acc) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 }
+let sorted = false;
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  displayMovements(currentNumber, !sorted);
+  sorted = sorted === false ? true : false;
+  // sorted= !sorted // same as line 133 but simpler than before
+});
 
 // This function will be display the summary,titel & total money
 let totalMoney;

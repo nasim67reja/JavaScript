@@ -220,7 +220,35 @@ const oddNumSort = oddNumber.sort((a, b) => a - b); // a-b return small to big a
 // console.log(oddNumber); // this works as we expected . for better understanding look mdn or jonas course sort lecture
 
 //
-//
+//👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇
+/*Hi Adam,
+
+first it is of course a difference on the complexity whether mapping, filtering or reducing the array in contrary of sorting. In the first functions you definitely must do something once for each element. Filter it out (or not), map it or run the reducing function. In case of sorting the best case is an array, that already is sorted. Then you need to look at each element once. In other cases (random arrays) the complexity using swapping is up to the quadrat of the number of elements. Thats because you need for each element a comparison with each other element of the non sorted rest of the array until it is at the right position. Look here the processing to get the least element:
+
+[200, 450, -400, 3000, -630, -130, 70]; 
+check 1. and 2. element: 200 - 450 < 0 no swap                   
+check 1. and 3. element: 200 - (-400) > 0 swap
+[-400, 450, 200, 3000, -630, -130, 70]; 
+check 1. and 4. element: -400 - 3000 < 0 no swap
+check 1. and 5. element: -400 - (-630) > 0 swap
+[-630, 450, 200, 3000, -400, -130, 70]; 
+check 1. and 6. element: -630 - (-130) < 0 no swap
+check 1. and 7. element: -630 - 70 < 0 no swap
+now the first element is at the right place, it's the least one
+now starting with the first element of the unsorted array:
+check 1. and 2. element: 450 - 200 > 0 swap
+[-630, 200, 450, 3000, -400, -130, 70]; and so on!!
+
+
+
+
+Second: no, the numbers are taken as they are, not the absolut values. So in case of the example:
+
+200 - 450 = -250, so negativ and not swapping (step 1 above)
+
+450 - (-400) = 850 , so positiv an swapping (step 2 above)
+
+*/
 //
 //
 //
