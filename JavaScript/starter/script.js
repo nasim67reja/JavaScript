@@ -211,21 +211,14 @@ btnClose.addEventListener('click', function (e) {
   inputCloseUsername.value = inputClosePin.value = '';
   inputClosePin.blur();
 });
-
-// flat() method=>
-// const arr2 = [1, 2, [3, 4]];
-// console.log(arr2.flat());
-// const arr3 = [1, 2, 3, [4, 5, 6, [7, 8]]];
-// console.log(arr3, arr3.flat(), arr3.flat(2));
-// this is how the flat method works in javascript
-// let's see another example
-const allBankMoney = accounts
-  .map(mov => mov.movements)
-  .flat()
-  .reduce((acc, crnt) => acc + crnt);
-console.log(allBankMoney);
-const allBankMoney2 = accounts
-  .flatMap(mov => mov.movements)
-  .reduce((acc, crnt) => acc + crnt);
-console.log(allBankMoney2); // remember that flatMap method goes only one level deep
-console.log('a' > 'A');
+// 🔥🔥🔥🔥  Calculate movements array from nodelist or UI
+document
+  .querySelector('.balance__label')
+  .addEventListener('click', function () {
+    const allMovements = document.querySelectorAll('.movements__value');
+    const fromNodeList = Array.from(allMovements, num => num.textContent).map(
+      el => Number(el.replace(/€/gi, ''))
+    );
+    console.log(fromNodeList);
+    const altNodeList = [...allMovements]; // alternative of from but jonas prefer to use from
+  });

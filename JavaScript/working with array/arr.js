@@ -259,6 +259,21 @@ const fillArr3 = arr3.fill(2, 3); // it's work like slice method here (first,sec
 // 😋😋😋😋 fill() method works also with containing element array
 const arr4 = [1, 2, 3, 4, 5];
 console.log(arr4.fill(2, 2));
+/*🤘🤘🤘🤘🤘🤘🤘🤘🤘🤘 Array.from()
+The Array.from() static method creates a new, shallow-copied Array instance from an array-like or iterable object.*/
+
+const x = Array.from({ length: 7 }, () => 1); // x will be returned seven 1 element
+const y = Array.from({ length: 7 }, (_, i) => i + 1); // y will be returned :[1, 2, 3, 4, 5, 6, 7];
+const diceRolls = Array.from({ length: 100 }, () =>
+  Math.trunc(Math.random() * 6 + 1)
+);
+// const checkDiceRolls = diceRolls.some(num => num > 6 || num < 2);
+console.log(checkDiceRolls);
+// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+/*
+Array.from is an important method . we can make a array all the iterables like string, maps ,sets. that's why this method know as from . it's an important use case is the queryselectorAll method returns a nodelist like array . we can convert the nodelist into array and apply the bunch of array method which we can't apply with nodelist
+*/
+// 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
 //
 //
