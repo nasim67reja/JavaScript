@@ -178,7 +178,56 @@ We finally pass the value 5,5 as the parameter to the .log-method, which sequent
 //
 //
 //
+// 👉👉👉👉👉👉 some() method :
+/*The some() method tests whether at least one element in the array passes the test implemented by the provided function. It returns true if, in the array, it finds an element for which the provided function returns true; otherwise it returns false. It doesn't modify the array.*/
+const array = [1, 2, 3, 4, 5, 6];
+const even = array.some(element => element % 2 === 1);
+// console.log(even); // Return true as even number exist in the array
+// 👉👉👉👉👉👉 Array.prototype.every()
+/*The every() method tests whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value.*/
+const positive = array.every(element => element > 0);
+// console.log(positive);// return true as all the element is above of 0
+/* 👉👉👉👉👉👉 Array.prototype.flat()
+The flat() method creates a new array with all sub-array elements concatenated into it recursively up to the specified depth. */
+const arr1 = [0, 1, 2, [3, 4], [5, 6, 7, [8, 9]]];
+// console.log(arr1, arr1.flat(1), arr1.flat(2)); // look at the console for better understand. flat(x)=> x will be number which specify that flat goes how much deep into an array
 
+const towTimesBig = arr1.flat(2).map(num => num * 2);
+// console.log(arr1.flat(2), towTimesBig);
+const addAll = arr1
+  .flat(2)
+  .map(num => num * 2)
+  .reduce((acc, crnt) => acc + crnt);
+// console.log(addAll);
+const arr2 = [0, 1, 2, [3, 4]];
+// const addAl2 = arr2
+//   .flat()
+//   .map(num => num * 2)
+//   .reduce((acc, crnt) => acc + crnt);
+// console.log(addAl2);
+// we can use flatMap() method instead of this proces
+const insteadFlat = arr2.flatMap((num, i, arr) => {
+  return num;
+});
+// console.log(insteadFlat);
+// 👉👉👉👉👉 sort() method
+const friends = ['alex', 'jonas', 'ben', 'rohit', 'smith'];
+// console.log(friends.sort());
+const oddNumber = [1, 5, 13, 19, 93, 33, 49, 53, 9];
+// console.log(oddNumber.sort()); // Return this [1, 13, 19, 33, 49,5, 53,  9, 93]
+// beacuse sort works for strings. don't worry we can make for number also by passing a callback funtion
+const oddNumSort = oddNumber.sort((a, b) => a - b); // a-b return small to big and b-a will be return the number big to small
+// console.log(oddNumber); // this works as we expected . for better understanding look mdn or jonas course sort lecture
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
 const regions = [
   {
     name: 'goa',
@@ -244,4 +293,4 @@ const safeRegions = regions
   .filter(region => !infectedRegions.includes(region.name))
   .map(region => region.name);
 
-console.log(safeRegions);
+// console.log(safeRegions);
