@@ -219,6 +219,60 @@ document
     const fromNodeList = Array.from(allMovements, num => num.textContent).map(
       el => Number(el.replace(/€/gi, ''))
     );
-    console.log(fromNodeList);
+    // console.log(fromNodeList);
     const altNodeList = [...allMovements]; // alternative of from but jonas prefer to use from
   });
+// Exercise
+// 1.count sum of all bank deposit
+const totalDeposit = accounts
+  .flatMap(acnt => acnt.movements)
+  .filter(dep => dep > 0)
+  .reduce((acc, crnt) => acc + crnt);
+console.log(totalDeposit);
+//2. how many deposite is atleast 1000
+
+const aboveThousandDeposit = accounts
+  .flatMap(acnt => acnt.movements)
+  .filter(dep => dep >= 1000).length;
+console.log(aboveThousandDeposit);
+const aboveThousandDepositCp = accounts
+  .flatMap(acnt => acnt.movements)
+  .reduce((acc, crnt) => (crnt >= 1000 ? acc + 1 : acc), 0);
+console.log(aboveThousandDepositCp);
+
+const depWith = accounts
+  .flatMap(am => am.movements)
+  .reduce(
+    (acc, cur) => {
+      // cur > 0 ? (acc.deposit += cur) : (acc.withdrawal += cur);
+      acc[cur > 0 ? 'deposit' : 'withdrawal'] += cur;
+      return acc;
+    },
+    {
+      deposit: 0,
+      withdrawal: 0,
+    }
+  );
+console.log(depWith);
+
+const arr10 = [2, 4];
+const redArr = arr10.reduce((acc, cur) => {
+  acc.push(cur * 2);
+  return acc;
+}, []);
+console.log(redArr);
+// 4. conver to title case
+// this is a title case => This Is a Title Case
+const converTitleCase = function (text) {
+  return text
+    .split(' ')
+    .map(word =>
+      word.length > 1
+        ? `${word[0].toUpperCase()}${word.slice(1).toLowerCase()}`
+        : word
+    )
+    .join(' ');
+};
+let text = 'this is a title case';
+console.log(converTitleCase(text));
+console.log(converTitleCase('thIs is a LONG title but not too lonG'));
