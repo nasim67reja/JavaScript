@@ -47,21 +47,55 @@ const dogs = [
   { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
   { weight: 32, curFood: 340, owners: ['Michael'] },
 ];
-dogs.map((dog, i) => (dogs[i].recommendedFood = dog.weight ** 0.75 * 28));
-const findOwner = dogs.find(owner => owner.owners.includes('Sarah'));
+// 👉👉👉👉 1.
+dogs.map(
+  (dog, i) => (dogs[i].recommendedFood = Math.trunc(dog.weight ** 0.75 * 28))
+);
+// dogs.map(dog => (dog.recommendedFood = Math.trunc(dog.weight ** 0.75 * 28)));
+// 👉👉👉👉  2.
+const dogSarah = dogs.find(owner => owner.owners.includes('Sarah'));
 const eatResult =
-  findOwner.curFood > findOwner.recommendedFood
+  dogSarah.curFood > dogSarah.recommendedFood
     ? `Sarah's dog eat too much`
     : `Sarah's dog eat too little`;
 console.log(eatResult);
-
+// 👉👉👉👉  3.
 const ownersEatTooMuch = dogs
   .filter(dog => dog.curFood > dog.recommendedFood)
-  .map(owner => owner.owners)
-  .flat();
+  .flatMap(owner => owner.owners);
+// .flat();
 console.log(ownersEatTooMuch);
 const ownersEatTooLittle = dogs
   .filter(dog => dog.curFood < dog.recommendedFood)
-  .map(owner => owner.owners)
-  .flat();
+  .flatMap(owner => owner.owners);
+// .flat();
 console.log(ownersEatTooLittle);
+console.log(dogs);
+// 👉👉👉👉  4.
+const eatTooMuch = `${ownersEatTooMuch.join(' and ')}'s dogs eat too much`;
+const eatTooLittle = `${ownersEatTooLittle.join(
+  ' and '
+)}'s dogs eat too Little`;
+console.log(eatTooMuch, eatTooLittle);
+// 👉👉👉👉  5.
+const exactlyEat = dogs.some(dog => dog.curFood === dog.recommendedFood);
+console.log(exactlyEat);
+// 👉👉👉👉  6.
+const okayAmmount = dogs.some(
+  dog =>
+    dog.curFood > dog.recommendedFood * 0.9 &&
+    dog.curFood < dog.recommendedFood * 1.1
+);
+console.log(okayAmmount);
+// 7.
+const okayAmmountArr = dogs.filter(
+  dog =>
+    dog.curFood > dog.recommendedFood * 0.9 &&
+    dog.curFood < dog.recommendedFood * 1.1
+);
+console.log(okayAmmountArr);
+// 8.
+const dogsShallowCopy = dogs
+  .slice()
+  .sort((a, b) => a.recommendedFood - b.recommendedFood);
+console.log(dogs, dogsShallowCopy);
