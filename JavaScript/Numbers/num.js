@@ -135,19 +135,45 @@ isEven(5); // return false
 In JavaScript number are save in 64 bit(where only 53 is use) in binery format that means largest can be 64 0 or 1. big than 64 0 or 1 javascript can not calculate or display it . the larges number with decimal 2**53 -1. in binary format this number makes with 64 0 or 1 . this is the largest number for javascript.Number can not display more than this number.
 that's where bigInt comes to this place 
 */
-console.log(2 ** 53 - 1); // return 9007199254740991 // this is essentially the bigest number that javascript can safely represent
-console.log(Number.MAX_SAFE_INTEGER); // also return 9007199254740991
+// console.log(2 ** 53 - 1); // return 9007199254740991 // this is essentially the bigest number that javascript can safely represent
+// console.log(Number.MAX_SAFE_INTEGER); // also return 9007199254740991
 
-console.log(23498014017401275017n); // here the n convert the number to bigInt
-console.log(23415n * 12839743174n); // Interesting fact that all the operator works for BigInt . But we can not operate bigint with normal number . it's thorwn an TypeError on the console
+// console.log(23498014017401275017n); // here the n convert the number to bigInt
+// console.log(23415n * 12839743174n); // Interesting fact that all the operator works for BigInt . But we can not operate bigint with normal number . it's thorwn an TypeError on the console
 let numArr = [2353, 1234n];
 // console.log(numArr[0] * numArr[1]); // throw typeError
-console.log(BigInt(numArr[0]) * numArr[1]);
+// console.log(BigInt(numArr[0]) * numArr[1]);
 20n > 15; // return true
 20n === 20; // return false like '20'===20===20n
 20n == 20; // return true like '20'==20==20n
 
 /// all the math operation does not work here
-Math.sqrt(20n); // thrown an typeError into the console
+// Math.sqrt(20n); // thrown an typeError into the console
 10n / 3n; // return 3n it's cut the decimal part
 10 / 3; // return 3.333333333
+
+// ///////////////////////////////////////////////////////////////////////////////
+// Date :
+/*JavaScript Date objects represent a single moment in time in a platform-independent format. Date objects contain a Number that represents milliseconds since 1 January 1970 UTC.*/
+const dateNow = new Date();
+// console.log(dateNow);
+// console.log(new Date('1997 19 june 3')); // never use this. used the string which one's created by javascript
+const future = new Date(2023, 1, 6, 12, 23, 36); // here new date(year,month,day,hour,min,sec) note that. month is 0 based
+
+// as date is a obect there are bunch of method avilable
+console.log(future);
+future.getFullYear(); // return 2024
+future.getMonth(); //return 1
+future.getDay(); //return 1 not the day of a month . this return the day of a week
+future.getDate();
+// console.log(future.getTime());
+// console.log(new Date(1675664616000));
+future.getTime();
+future.getHours();
+future.getSeconds();
+console.log(future.toISOString()); // return 2023-02-06T06:23:36.000Z this is the iso string which follow the some kind of international standard
+// there are also set month , date ,time (for more look mdn)
+future.setFullYear(2027);
+console.log(future);
+const sum = a => b => a + b;
+console.log(sum(5)(6));
