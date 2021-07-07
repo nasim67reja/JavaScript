@@ -80,13 +80,28 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 /////////////////////////////////////////////////
 // Functions
-
-const displayMovements = function (movements, sort = false) {
+const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
-
-  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
-
+  const date = new Date();
+  const [year, month, day, minute] = [
+    date.getFullYear(),
+    date.getMonth(),
+    date.getDate(),
+    date.getMinutes(),
+  ];
+  let hour = `${date.getHours()}`.padStart(10, '');
+  labelDate.textContent = `${day.length > 1 ? day : `${day}`.padStart(2, 0)}/${
+    month.length > 1 ? month : `${month}`.padStart(2, 0)
+  }/${year}  ${hour}:${minute}`;
+  const movs = sort
+    ? acc.movements.slice().sort((a, b) => a - b)
+    : acc.movements;
+  // creating date :
   movs.forEach(function (mov, i) {
+    const accDate = new Date(acc.movementsDates[i]);
+    const day = accDate.getDate();
+    const month = accDate.getMonth();
+    const year = accDate.getFullYear();
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = `
@@ -94,6 +109,7 @@ const displayMovements = function (movements, sort = false) {
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
+    <div class="movements__date">${day}/${month}/${year}</div>
         <div class="movements__value">${mov.toFixed(2)}€</div>
       </div>
     `;
@@ -142,7 +158,7 @@ createUsernames(accounts);
 
 const updateUI = function (acc) {
   // Display movements
-  displayMovements(acc.movements);
+  displayMovements(acc);
 
   // Display balance
   calcDisplayBalance(acc);
@@ -162,7 +178,7 @@ btnLogin.addEventListener('click', function (e) {
   currentAccount = accounts.find(
     acc => acc.username === inputLoginUsername.value
   );
-  console.log(currentAccount);
+  // console.log(currentAccount);
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     // Display UI and message
@@ -196,7 +212,10 @@ btnTransfer.addEventListener('click', function (e) {
   ) {
     // Doing the transfer
     currentAccount.movements.push(-amount);
+    currentAccount.movementsDates.push(new Date().toISOString());
+
     receiverAcc.movements.push(amount);
+    receiverAcc.movementsDates.push(new Date().toISOString());
 
     // Update UI
     updateUI(currentAccount);
@@ -211,7 +230,7 @@ btnLoan.addEventListener('click', function (e) {
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
     // Add movement
     currentAccount.movements.push(amount);
-
+    currentAccount.movementsDates.push(new Date().toISOString());
     // Update UI
     updateUI(currentAccount);
   }
@@ -244,7 +263,7 @@ btnClose.addEventListener('click', function (e) {
 let sorted = false;
 btnSort.addEventListener('click', function (e) {
   e.preventDefault();
-  displayMovements(currentAccount.movements, !sorted);
+  displayMovements(currentAccount, !sorted);
   sorted = !sorted;
 });
 
