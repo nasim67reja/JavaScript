@@ -79,6 +79,20 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 /////////////////////////////////////////////////
+const displayDate = accDate => {
+  const day = accDate.getDate();
+  const month = accDate.getMonth();
+  const year = accDate.getFullYear();
+  const calcDay = (date1, date2) => {
+    return Math.round(Math.abs((date2 - date1) / (1000 * 60 * 60 * 24)));
+  };
+  const differenceDate = calcDay(new Date(), accDate);
+  if (differenceDate === 0) return `Today`;
+  if (differenceDate === 1) return 'yesterday';
+  if (differenceDate < 7) return `${differenceDate} days ago`;
+  // if (differenceDate > 6) return `${day}/${month}/${year}`;
+  if (differenceDate > 6) return `${differenceDate} din ager vuti`;
+};
 // Functions
 const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
@@ -99,9 +113,7 @@ const displayMovements = function (acc, sort = false) {
   // creating date :
   movs.forEach(function (mov, i) {
     const accDate = new Date(acc.movementsDates[i]);
-    const day = accDate.getDate();
-    const month = accDate.getMonth();
-    const year = accDate.getFullYear();
+    const displayDateResult = displayDate(accDate);
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = `
@@ -109,7 +121,7 @@ const displayMovements = function (acc, sort = false) {
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
-    <div class="movements__date">${day}/${month}/${year}</div>
+    <div class="movements__date">${displayDateResult}</div>
         <div class="movements__value">${mov.toFixed(2)}€</div>
       </div>
     `;
@@ -270,3 +282,8 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+
+// const calcDay = (date1, date2) => {
+//   return Math.round((date2 - date1) / (1000 * 60 * 60 * 24));
+// };
+// console.log(calcDay(new Date(), new Date('16 july 2021')));
