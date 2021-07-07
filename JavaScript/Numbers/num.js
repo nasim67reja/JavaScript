@@ -176,4 +176,14 @@ console.log(future.toISOString()); // return 2023-02-06T06:23:36.000Z this is th
 future.setFullYear(2027);
 console.log(future);
 const sum = a => b => a + b;
-console.log(sum(5)(6));
+// console.log(sum(5)(6));
+
+/////////////////////////////////////////////////////////////////////////////////////////
+let me = {
+  a: 'Rishabh',
+  age: 25,
+  valueOf() {
+    return this.age;
+  },
+};
+console.log(+me);

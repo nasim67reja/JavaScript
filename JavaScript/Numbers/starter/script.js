@@ -79,10 +79,10 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 /////////////////////////////////////////////////
-const displayDate = accDate => {
-  const day = accDate.getDate();
-  const month = accDate.getMonth();
-  const year = accDate.getFullYear();
+const displayDate = (accDate, local) => {
+  // const day = accDate.getDate();
+  // const month = accDate.getMonth();
+  // const year = accDate.getFullYear();
   const calcDay = (date1, date2) => {
     return Math.round(Math.abs((date2 - date1) / (1000 * 60 * 60 * 24)));
   };
@@ -91,29 +91,40 @@ const displayDate = accDate => {
   if (differenceDate === 1) return 'yesterday';
   if (differenceDate < 7) return `${differenceDate} days ago`;
   // if (differenceDate > 6) return `${day}/${month}/${year}`;
-  if (differenceDate > 6) return `${differenceDate} din ager vuti`;
+  if (differenceDate > 6) return new Intl.DateTimeFormat(local).format(accDate);
 };
+///////////////////////////////////////////////////////////////
+
 // Functions
 const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
+  //intldate api
   const date = new Date();
-  const [year, month, day, minute] = [
-    date.getFullYear(),
-    date.getMonth(),
-    date.getDate(),
-    date.getMinutes(),
-  ];
-  let hour = `${date.getHours()}`.padStart(10, '');
-  labelDate.textContent = `${day.length > 1 ? day : `${day}`.padStart(2, 0)}/${
-    month.length > 1 ? month : `${month}`.padStart(2, 0)
-  }/${year}  ${hour}:${minute}`;
+  const options = {
+    hour: 'numeric',
+    minute: 'numeric',
+    // second: 'numeric',
+    day: '2-digit',
+    month: 'numeric', // 2-digit,long exist
+    year: 'numeric',
+    // weekday: 'short', // long,narrow exist
+  };
+  // const local = navigator.language; // user computer language
+  const local = acc.locale;
+  labelDate.textContent = new Intl.DateTimeFormat(
+    local,
+    //'en-uk' /*you can change the en-uk here. but best practice is write the local means the user based information*/,
+    options
+  ).format(date); // finding iso code go here 'http://www.lingoes.net/en/translator/langcode.htm'
+
+  ///////
   const movs = sort
     ? acc.movements.slice().sort((a, b) => a - b)
     : acc.movements;
   // creating date :
   movs.forEach(function (mov, i) {
     const accDate = new Date(acc.movementsDates[i]);
-    const displayDateResult = displayDate(accDate);
+    const displayDateResult = displayDate(accDate, local);
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = `
@@ -182,7 +193,9 @@ const updateUI = function (acc) {
 ///////////////////////////////////////
 // Event handlers
 let currentAccount;
-
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = 100;
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
   e.preventDefault();
