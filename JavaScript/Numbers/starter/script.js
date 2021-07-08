@@ -115,7 +115,7 @@ const displayMovements = function (acc, sort = false) {
     local,
     //'en-uk' /*you can change the en-uk here. but best practice is write the local means the user based information*/,
     options
-  ).format(date); // finding iso code go here 'http://www.lingoes.net/en/translator/langcode.htm'
+  ).format(date);
 
   ///////
   const movs = sort
@@ -126,14 +126,18 @@ const displayMovements = function (acc, sort = false) {
     const accDate = new Date(acc.movementsDates[i]);
     const displayDateResult = displayDate(accDate, local);
     const type = mov > 0 ? 'deposit' : 'withdrawal';
-
+    const displayNumber = new Intl.NumberFormat('en-us', {
+      style: 'currency',
+      currency: acc.currency,
+    }).format(mov);
+    console.log(displayNumber);
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
     <div class="movements__date">${displayDateResult}</div>
-        <div class="movements__value">${mov.toFixed(2)}€</div>
+        <div class="movements__value">${displayNumber}</div>
       </div>
     `;
 
