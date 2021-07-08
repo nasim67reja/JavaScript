@@ -1,3 +1,4 @@
+'use-strict';
 // 🔥🔥🔥🔥🔥🔥 Number
 /*
 Number is a primitive wrapper object used to represent and manipulate numbers like 37 or -9.25.
@@ -184,18 +185,18 @@ const sum = a => b => a + b;
 console.log('%c-------for date-------', 'color:yellow');
 const now = new Date();
 // console.log(new Intl.DateTimeFormat('en-us').format(now)); //7/7/2021
-const options = {
-  hour: 'numeric',
-  minute: 'numeric',
-  day: 'numeric',
-  month: 'numeric', // 2-digit,long exist
-  year: 'numeric', // 2-digit exist
-  weekday: 'short', // long & narrow exist
-};
-const local = navigator.language;
-console.log(local);
-const formatDate = new Intl.DateTimeFormat(local, options).format(now);
-console.log(formatDate);
+// const options = {
+//   hour: 'numeric',
+//   minute: 'numeric',
+//   day: 'numeric',
+//   month: 'numeric', // 2-digit,long exist
+//   year: 'numeric', // 2-digit exist
+//   weekday: 'short', // long & narrow exist
+// };
+// const local = navigator.language;
+// console.log(local);
+// const formatDate = new Intl.DateTimeFormat(local, options).format(now);
+// console.log(formatDate);
 const options2 = {
   // style: 'unit',
   // unit: 'percent', // there are tons of unit exist look the mdn
@@ -204,5 +205,24 @@ const options2 = {
   currency: 'USD',
   // useGrouping: false,
 };
-console.log(new Intl.NumberFormat(local, options2).format(now)); // all are same here we can specify any local with his code.
+// console.log(new Intl.NumberFormat(local, options2).format(now)); // all are same here we can specify any local with his code.
 // finding iso code go here 'http://www.lingoes.net/en/translator/langcode.htm'
+
+////////////////////////////////////////////////////////////////////////////////////////////// Clock
+const clock = document.querySelector('.clock');
+setInterval(function () {
+  const options = {
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    // day: 'numeric',
+    // month: 'numeric', // 2-digit,long exist
+    // year: 'numeric', // 2-digit exist
+    // weekday: 'short', // long & narrow exist
+  };
+  const local = navigator.language;
+  const now = new Date();
+  const formatDate = new Intl.DateTimeFormat(local, options).format(now);
+  // console.log(formatDate);
+  clock.textContent = formatDate;
+}, 1000);
