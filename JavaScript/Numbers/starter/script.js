@@ -80,9 +80,6 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 /////////////////////////////////////////////////
 const displayDate = (accDate, local) => {
-  // const day = accDate.getDate();
-  // const month = accDate.getMonth();
-  // const year = accDate.getFullYear();
   const calcDay = (date1, date2) => {
     return Math.round(Math.abs((date2 - date1) / (1000 * 60 * 60 * 24)));
   };
@@ -90,7 +87,6 @@ const displayDate = (accDate, local) => {
   if (differenceDate === 0) return `Today`;
   if (differenceDate === 1) return 'yesterday';
   if (differenceDate < 7) return `${differenceDate} days ago`;
-  // if (differenceDate > 6) return `${day}/${month}/${year}`;
   if (differenceDate > 6) return new Intl.DateTimeFormat(local).format(accDate);
 };
 ///////////////////////////////////////////////////////////////
@@ -103,73 +99,69 @@ const displayMovements = function (acc, sort = false) {
   const options = {
     hour: 'numeric',
     minute: 'numeric',
-    // second: 'numeric',
-    day: '2-digit',
-    month: 'numeric', // 2-digit,long exist
+    day: 'numeric',
+    month: 'numeric',
     year: 'numeric',
-    // weekday: 'short', // long,narrow exist
   };
-  // const local = navigator.language; // user computer language
-  const local = acc.locale;
-  labelDate.textContent = new Intl.DateTimeFormat(
-    local,
-    //'en-uk' /*you can change the en-uk here. but best practice is write the local means the user based information*/,
-    options
-  ).format(date);
+  labelDate.textContent = new Intl.DateTimeFormat(acc.locale, options).format(
+    date
+  );
 
   ///////
   const movs = sort
     ? acc.movements.slice().sort((a, b) => a - b)
     : acc.movements;
-  // creating date :
+
   movs.forEach(function (mov, i) {
     const accDate = new Date(acc.movementsDates[i]);
-    const displayDateResult = displayDate(accDate, local);
+    const displayDateResult = displayDate(accDate, acc.locale);
     const type = mov > 0 ? 'deposit' : 'withdrawal';
-    const displayNumber = new Intl.NumberFormat('en-us', {
-      style: 'currency',
-      currency: acc.currency,
-    }).format(mov);
-    console.log(displayNumber);
+
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
     <div class="movements__date">${displayDateResult}</div>
-        <div class="movements__value">${displayNumber}</div>
+        <div class="movements__value">${displayNumberFormat(mov, acc)}</div>
       </div>
     `;
 
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
-
+// display money on the base of user
+const displayNumberFormat = (num, acc) => {
+  const options = {
+    style: 'currency',
+    currency: acc.currency,
+  };
+  return new Intl.NumberFormat(acc.locale, options).format(num);
+};
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${acc.balance}€`;
+  labelBalance.textContent = `${displayNumberFormat(acc.balance, acc)}`;
 };
-
 const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes}€`;
+  labelSumIn.textContent = `${displayNumberFormat(incomes, acc)}`;
 
-  const out = acc.movements
+  let out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out.toFixed(2))}€`;
+  out = Math.abs(out);
+  labelSumOut.textContent = `${displayNumberFormat(out, acc)}`;
 
   const interest = acc.movements
     .filter(mov => mov > 0)
     .map(deposit => (deposit * acc.interestRate) / 100)
-    .filter((int, i, arr) => {
-      // console.log(arr);
+    .filter(int => {
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
-  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
+  labelSumInterest.textContent = `${displayNumberFormat(interest, acc)}`;
 };
 
 const createUsernames = function (accs) {
@@ -242,8 +234,9 @@ btnTransfer.addEventListener('click', function (e) {
     // Doing the transfer
     currentAccount.movements.push(-amount);
     currentAccount.movementsDates.push(new Date().toISOString());
-
-    receiverAcc.movements.push(amount);
+    const currency =
+      currentAccount.currency === 'EUR' ? amount * 1.18 : amount / 1.18;
+    receiverAcc.movements.push(currency);
     receiverAcc.movementsDates.push(new Date().toISOString());
 
     // Update UI

@@ -215,6 +215,7 @@ setInterval(function () {
     hour: 'numeric',
     minute: 'numeric',
     second: 'numeric',
+
     // day: 'numeric',
     // month: 'numeric', // 2-digit,long exist
     // year: 'numeric', // 2-digit exist
