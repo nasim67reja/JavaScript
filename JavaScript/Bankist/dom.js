@@ -85,3 +85,8 @@ logo.classList.remove('c', 'b');
 logo.classList.toggle('c', 'b');
 logo.classList.contains('c', 'b');
 // these are the four classes attributes
+{
+  var oldName = 'Nasim';
+  let newName = 'Reja';
+  const famousName = 'Leon';
+}
