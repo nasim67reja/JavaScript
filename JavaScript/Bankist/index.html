@@ -22,8 +22,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             min-height: 100vh;
             font-family: sans-serif;
+        }
+
+        .parent {
+            border: 2px solid black;
         }
 
         .child {
@@ -55,6 +60,10 @@
 </head>
 
 <body>
+    <nav class="navber">
+        <img src="https://www.popsci.com/uploads/2019/03/18/5ACSKWYIOW6ZLCYSLVNJYVX72A.jpg?width=785" alt="computer"
+            class="navber-child" designer='Nasim' data-version-number='3.0'>
+    </nav>
     <div class="parent">
         <div class="child"> This is about advance dom</div>
     </div>

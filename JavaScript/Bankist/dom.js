@@ -44,3 +44,44 @@ document.querySelector('.btn').addEventListener('click', function () {
 The reason we're using .innerHTML here is that we just created the element, and we want to define exactly what HTML it should contain. We don't have to worry about overwriting anything.
 That being said, we could've just as well used .insertAdjacentHTML here, since we know the newly created element should be empty.
 In summary, you want to use .insertAdjacentHTML when you want to add to existing HTML in an element. We use .innerHTML if we want to start from scratch with our own HTML.*/
+//////////////////////////////////////////////////////////////////////////////////////////////////// Styles Attribute and Classes
+
+// Styles :
+message.style.backgroundColor = '#37383d'; // note that here the bg property will be applied in camelCase and the value will be exactly look like the css value
+message.style.marginTop = '2rem';
+message.style.width = '100%'; // look on the browser these style apply in the inline style
+console.log(message.style.height); // return nothing . becasue the style property works for only the inline style that we set ourselves also using the style property
+console.log(message.style.backgroundColor); // it will be returned rgb(55, 56, 61). mind it that it willi only work for inline style property
+console.log(message.style.color); // it also return nothing . because it is specify in style sheet not inline styled.
+console.log(getComputedStyle(message).height); // it will return all the property with the value // but this code will return the height even it was not set
+// let sum = Number.parseFloat(getComputedStyle(message).height) + 40;
+// we can increase the value like this:
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height) + 40 + 'px';
+console.log(getComputedStyle(message).height);
+
+// we can change the  color which one's is  declare with variable in css file. at first we have to select the css variable based on it's possition. if it was declare on the root then we can select the document.documentElement beacuse root(in css) is equal to document in javascript
+document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+// Attributes:
+const logo = document.querySelector('.navber-child');
+console.log(logo.alt);
+console.log(logo.src); // thrown absolute url on the console which is different than the html url. if we want the relative url
+console.log(logo.getAttribute('src')); // this is same about herf attribute for link
+console.log(logo.className);
+// console.log(logo.designer) ;// it will be returned undefined
+console.log(logo.getAttribute('designer'));
+logo.setAttribute('company', 'Bankist');
+logo.alt = 'A man with computer';
+
+// Data attribute :
+console.log(logo.dataset.versionNumber); // so for this special attribute they are always store in the dataset
+// we use data set quite a lot when we works with UI. we store data in user Interface . basically in the html code
+
+//Classes:
+
+logo.classList.add('c', 'b');
+logo.classList.remove('c', 'b');
+logo.classList.toggle('c', 'b');
+logo.classList.contains('c', 'b');
+// these are the four classes attributes
