@@ -56,16 +56,47 @@
             border-radius: 10px;
             color: white;
         }
+
+        .nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .nav-link {
+            margin: 1rem;
+            list-style: none;
+        }
+
+        .nav-links {
+            text-decoration: none;
+            font-size: 1.5rem;
+
+
+        }
     </style>
 </head>
 
 <body>
-    <!-- <nav class="navber">
+    <div class="container">
+        <!-- <nav class="navber">
         <img src="https://www.popsci.com/uploads/2019/03/18/5ACSKWYIOW6ZLCYSLVNJYVX72A.jpg?width=785" alt="computer"
             class="navber-child" designer='Nasim' data-version-number='3.0'>
     </nav> -->
-    <div class="parent">
-        <h1 class="child"> This is about advance dom</h1>
+        <ul class="nav">
+
+            <li class="nav-link"><a href="#" class="nav-links">submit</a></li>
+            <li class="nav-link"><a href="#" class="nav-links">home</a></li>
+            <li class="nav-link"><a href="#" class="nav-links">about</a></li>
+            <li class="nav-link"><a href="#" class="nav-links">docs</a></li>
+            <li class="nav-link"><a href="#" class="nav-links">Ref.</a></li>
+        </ul>
+
+
+
+        <div class="parent">
+            <h1 class="child"> This is about advance dom</h1>
+        </div>
     </div>
     <script src="dom.js"></script>
 </body>

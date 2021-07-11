@@ -114,7 +114,10 @@ newButton.innerHTML = '<button class="btn">Change Color</button>';
 main.prepend(newButton);
 newButton.style.marginLeft = '25rem';
 
-const randomInt = (max, min) => Math.round(Math.random() * (max - min)) + min;
+const randomInt = (max, min) =>
+  // Math.round(Math.random() * (max - min) + 1) + min;
+  Math.round(Math.random() * (max - min)) + min;
+
 newButton.addEventListener('click', function () {
   body.style.backgroundColor = `rgb(${randomInt(0, 255)},${randomInt(
     0,
@@ -123,3 +126,35 @@ newButton.addEventListener('click', function () {
   // console.log(body.style.backgroundColor);
 });
 */
+
+////////////////////////////////////////////////////////////////////////////////// 👉👉👉👉👉👉👉 bubbling and captureing
+const randomInt = (max, min) => Math.round(Math.random() * (max - min)) + min;
+const randomColor = () =>
+  `rgb(${randomInt(255, 0)},${randomInt(255, 0)},${randomInt(255, 0)})`;
+const navLinks = document.querySelector('.nav-links');
+const navber = document.querySelector('.nav');
+const container = document.querySelector('.container');
+
+// eventHander function
+navLinks.addEventListener('click', function (e) {
+  console.log('links', e.target, e.currentTarget);
+  this.style.backgroundColor = randomColor();
+  this.style.color = randomColor();
+  console.log(e.currentTarget === this); //basically the same
+  // Stop propagation
+  // e.stopPropagation()
+});
+navber.addEventListener('click', function (e) {
+  console.log('navber', e.target, e.currentTarget);
+  this.style.backgroundColor = randomColor();
+});
+container.addEventListener('click', function (e) {
+  console.log('container', e.target, e.currentTarget);
+  this.style.backgroundColor = randomColor();
+});
+document.body.addEventListener('click', function (e) {
+  console.log('container', e.target, e.currentTarget);
+  this.style.backgroundColor = randomColor();
+});
+// note that e.target => target not the element which ones is attach with it. it target the acutal target element but e.currentTarget target the element which one's is attach with it
+// addEventListner is only listining the bubbling face not the capturing face . but if we set the third parameter as true the eventhandler are no longer been to listen the bubbling face now it listing the capturing face but it is not good practice at all
