@@ -1,6 +1,6 @@
 //  Selecting , creating and deleting elements :
 
-// 👉👉👉👉👉👉👉 1. selecting :
+// // 👉👉👉👉👉👉👉 1. selecting :
 console.log(document.documentElement); // this is select a entire web page.if we want to apply the css on whole page then we select like this.only document is not enough
 console.log(document.head);
 console.log(document.body);
@@ -64,26 +64,26 @@ console.log(getComputedStyle(message).height);
 document.documentElement.style.setProperty('--color-primary', 'orangered');
 
 // Attributes:
-const logo = document.querySelector('.navber-child');
-console.log(logo.alt);
-console.log(logo.src); // thrown absolute url on the console which is different than the html url. if we want the relative url
-console.log(logo.getAttribute('src')); // this is same about herf attribute for link
-console.log(logo.className);
-// console.log(logo.designer) ;// it will be returned undefined
-console.log(logo.getAttribute('designer'));
-logo.setAttribute('company', 'Bankist');
-logo.alt = 'A man with computer';
+// const logo = document.querySelector('.navber-child');
+// console.log(logo.alt);
+// console.log(logo.src); // thrown absolute url on the console which is different than the html url. if we want the relative url
+// console.log(logo.getAttribute('src')); // this is same about herf attribute for link
+// console.log(logo.className);
+// // console.log(logo.designer) ;// it will be returned undefined
+// console.log(logo.getAttribute('designer'));
+// logo.setAttribute('company', 'Bankist');
+// logo.alt = 'A man with computer';
 
 // Data attribute :
-console.log(logo.dataset.versionNumber); // so for this special attribute they are always store in the dataset
+// console.log(logo.dataset.versionNumber); // so for this special attribute they are always store in the dataset
 // we use data set quite a lot when we works with UI. we store data in user Interface . basically in the html code
 
 //Classes:
 
-logo.classList.add('c', 'b');
-logo.classList.remove('c', 'b');
-logo.classList.toggle('c', 'b');
-logo.classList.contains('c', 'b');
+// logo.classList.add('c', 'b');
+// logo.classList.remove('c', 'b');
+// logo.classList.toggle('c', 'b');
+// logo.classList.contains('c', 'b');
 // these are the four classes attributes
 
 ////////////////////////////////////////////////////////////////////////////////// Type of Events and event Handlers
@@ -96,6 +96,7 @@ const h1 = document.querySelector('h1');
 //   alert('addEventListener:Great ! You are reading the heading:D');
 // }; // it is old school way we always use the addEventListener
 // addEventListener is better than onmouseenter becasue it allows us to add multiple event lisners to the same events . we can also remove the function when we don't need it anymore
+/*
 const alertH1 = function (e) {
   alert('addEventListener:Great !You are reading the heading:D');
   // h1.removeEventListener('mouseenter', alertH1); // after one time happen it will not working
@@ -103,3 +104,22 @@ const alertH1 = function (e) {
 h1.addEventListener('mouseenter', alertH1);
 // we also remove the event after some time passed
 setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 10000);
+*/
+
+/* 🔥🔥🔥🔥 Color generator
+const body = document.querySelector('body');
+const newButton = document.createElement('div');
+newButton.classList.add('parent');
+newButton.innerHTML = '<button class="btn">Change Color</button>';
+main.prepend(newButton);
+newButton.style.marginLeft = '25rem';
+
+const randomInt = (max, min) => Math.round(Math.random() * (max - min)) + min;
+newButton.addEventListener('click', function () {
+  body.style.backgroundColor = `rgb(${randomInt(0, 255)},${randomInt(
+    0,
+    255
+  )},${randomInt(0, 255)})`;
+  // console.log(body.style.backgroundColor);
+});
+*/
