@@ -32,9 +32,34 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+const navLinks = document.querySelector('.nav__links');
+const navLink = document.querySelectorAll('.nav__link');
+// navber button smooth  ness handler function
+// navLink.forEach(el => {
+//   el.addEventListener('click', function (e) {
+//     console.log(this);
+//     e.preventDefault();
+//     const tar = this.getAttribute('href');
+//     document.querySelector(tar).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
+//////////////////////////////////////////
+/*
+There are two term :
+1. Add event Listener to common parent element
+2 . Determine what elelment originated the event
+*/
+navLinks.addEventListener('click', function (e) {
+  e.preventDefault();
+  // console.log(e.target);
+  if (e.target.getAttribute('class') === 'nav__link') {
+    // jonas code if(e.target.classList.contains('nav__link'))
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});
 const btnScrolled = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
-
 // btn scrolled event handler funtionality
 btnScrolled.addEventListener('click', function (e) {
   section1.scrollIntoView({ behavior: 'smooth' }); // we can apply the scrolling in css and that is a better way for old browser
