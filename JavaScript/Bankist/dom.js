@@ -158,3 +158,24 @@ document.body.addEventListener('click', function (e) {
 });
 // note that e.target => target not the element which ones is attach with it. it target the acutal target element but e.currentTarget target the element which one's is attach with it
 // addEventListner is only listining the bubbling face not the capturing face . but if we set the third parameter as true the eventhandler are no longer been to listen the bubbling face now it listing the capturing face but it is not good practice at all
+
+//////////////////////////////////////////////////////////////////////////////// Dom traversing
+// going downwards : child
+console.log(container.querySelectorAll('.nav-link')); // note that
+console.log(container.childNodes); // it return all including comments , text  etc
+console.log(container.children); // this gives a HTMLCollection
+container.firstElementChild.style.backgroundColor = 'yellow';
+container.lastElementChild.style.backgroundColor = 'silver';
+
+// Going upwards : parents
+console.log(container.parentNode);
+console.log(container.parentElement); // return same output
+// container.closest('something') closest method is the opposite of the quesryselector . closest find the parent no matter how far is this
+
+// Going sideways: siblings
+container.previousElementSibling;
+container.nextElementSibling;
+
+container.previousSibling;
+container.nextSibling;
+container.parentElement.children; // return all the siblings include itself
