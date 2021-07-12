@@ -108,3 +108,11 @@ tabBtnContainer.addEventListener('click', e => {
     .querySelector(`.operations__content--${clicked.getAttribute('data-tab')}`)
     .classList.add('operations__content--active');
 });
+/////////////////////////////////////////////////////////////////////
+// Sticky navigation :
+const nav = document.querySelector('.nav');
+const navSituated = section1.getBoundingClientRect();
+window.addEventListener('scroll', function () {
+  if (window.scrollY > navSituated.top) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+});
