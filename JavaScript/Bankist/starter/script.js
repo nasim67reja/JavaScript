@@ -87,3 +87,24 @@ btnScrolled.addEventListener('click', function (e) {
     document.documentElement.clientWidth
   ); // it returns the visual hieght and width of the window */
 });
+
+//////////// Operations section :
+const tabBtn = document.querySelectorAll('.operations__tab');
+const tabBtnContainer = document.querySelector('.operations__tab-container');
+const operationContent = document.querySelectorAll('.operations__content');
+
+tabBtnContainer.addEventListener('click', e => {
+  const clicked = e.target.closest('.operations__tab');
+  // console.log(clicked.getAttribute('data-tab'));
+  if (!clicked) return;
+  // active tab
+  tabBtn.forEach(b => b.classList.remove('operations__tab--active'));
+  clicked.classList.add('operations__tab--active');
+
+  operationContent.forEach(t =>
+    t.classList.remove('operations__content--active')
+  );
+  document
+    .querySelector(`.operations__content--${clicked.getAttribute('data-tab')}`)
+    .classList.add('operations__content--active');
+});
