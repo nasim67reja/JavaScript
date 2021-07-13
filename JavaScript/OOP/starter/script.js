@@ -23,11 +23,185 @@ const Person = function (firstName, birthYear) {
 console.log(new Person('Jonas', 1991));
 const matilda = new Person('Matilda', 2017);
 const jack = new Person('Jack', 1975);
-console.log(jack.calcAge());
 console.log(matilda, jack);
 /*
 Like Classical oop programming concept here the matilda ,jack is Instance for Person(beacuse javascript has no class). for checking this we have in below:
 */
+/*
 const jonas = 'jonas';
 console.log(jonas instanceof Person); // Return false
 console.log(jack instanceof Person); // return true
+*/
+
+Person.prototype.calcAge = function () {
+  console.log(this.birthYear - 2021);
+};
+matilda.calcAge();
+/*🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+👉👉👉👉👉👉 Look this is very important :
+here , Person.prototype  => so the prototype property of the constructor function(Person). so
+all the object that are created from the constructor function will inherit . so they will get access to all the methods and properties that are defines on this prototype property. 
+that's why In line 36 we add an method in to the prototype property then the matilda object which  are created from Person constructor function  are able to acces the calAge method. awesome
+*/
+
+const arr = new Array(1, 2, 3);
+
+const newArr = arr.map(num => num * 2);
+/*
+This array method is exactly same as above. wow that is awesome finally i am able to understand the prototype concept
+*/
+// console.log(newArr);
+// console.dir(Person);
+// console.dir(Array);
+/*🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+👉👉👉👉👉👉 Look this is very important :
+Any object always has access to the methods and properties from it's prototypes and the prototypes of matlida is Person.prototypes and we can actually confirm that because each object has special property called(__proto__)
+*/
+console.log(matilda.__proto__);
+/* Look at the console where we found the calcAge function  and that's why jonas is able to use this. So the prototypes of the matlida object is essentially the prototype property of the constructor function.we can check that by
+ */
+console.log(matilda.__proto__ === Person.prototype); // return true
+/*Person.prototype(look here the prototype is not a prototype of the Person)
+ Person.prototype, what's gonna be used as the prototype of all the objects that are created with the person constructor function.
+ */
+console.log(Person.prototype.isPrototypeOf(matilda)); // return true
+console.log(Person.prototype.isPrototypeOf(Person)); // return false
+// so this very common confusion are comes from the bad naming of this property(prototype)
+// it should be .prototypeOfLinkedObjects (jonas's opinion)
+/*
+one more question where does this __proto__  propertry on the matlida object actually come from. well remember the new operator  it containes the step number three(line 7)
+so it creates the __proto__ property and it set it's value to the prototype propertry of the function that has been called. so that is exactly written in line 63
+so it set the __proto__ property on the object to the prototype propertry of the constructor function and this is how javascript knows internally that the matlida object is connected to
+Person.prototype 
+*/
+// now we can also set property on the property no just method. look bellow
+
+Person.prototype.species = 'Homo Sapiens';
+console.log(matilda); // matlida.species
+/*However the property or method that are exist in prototype is not connected directly to the object we can check this by */
+console.log(matilda.hasOwnProperty('species')); // return false
+console.log(matilda.hasOwnProperty('firstName')); // return true
+/*
+😎😎😎😎😎😎😎😎😎😎😎  that is how the new keyword work
+function Person(firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+}
+Person.prototype.greet = function() {
+  console.log('Hello');
+}
+ 
+function newPerson(firstName, birthYear) {
+  // 1. Create an empty object
+  const person = {};
+ 
+  // 2. Link the object with its constructor's prototype
+  person.__proto__ = Person.prototype;
+ 
+  // 3. Bind the 'this' keyword to the newly created 'person' object
+  // Here's it's called 'that' to not collide with the reserved 'this' keyword
+  const that = person;
+ 
+  // 4. Execute the constructor function
+  Person.call(that, firstName, birthYear);
+ 
+  // 5. Return 'this'
+  return that;
+}
+ 
+const john = newPerson('John', 1990);
+///////////////////////////////////////////////////////////////////////////////////////////
+
+
+😉😉😉😉😉😉😉😉😉😉😉😉😉😉😉😉😉😉😉😉😉😉
+The difference between __proto__ and prototype
+prototype
+
+1. Each function in JS will automatically have an property called prototype, which includes constructor function
+
+2. prorotype is an property in (constructor) function which contains all the stuff that that will be inherited by it's instance
+
+3. Every object created by a constructor function will be able to get access to all the methods and properties that define on the prototype property of the constructor function
+
+4. By this way, we don't need to set the method on every object. Instead, we only set the method once on the prototype of constructor function. Then all the object created by this constructor function will have access to that method
+
+
+
+__proto__
+
+1. Every object in JS will have a property called __proto__
+
+2. The __proto__ property of object is essentially the prototype property of the constructor function that create the object
+
+3. In other words, __proto__ of object is as same as prototype of function which create that object
+
+
+
+Let's review the code in this lecturer
+
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+First, we create a constructor function called Person.
+
+At this time, the prototype of this function has nothing (not indeed empty actually)
+
+console.log(Person.prototype);
+
+
+Then, we create a method on the prototype of Person
+
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+Break it down a little bit
+
+1.  Person is a constructor function
+
+2. "prototype" is one of the property in the Person constructor function
+
+3.  then we define a method called calcAge on that "prototype" property
+
+4.  All the object(instance) created by Person constructor function will inheirt it's prototype
+
+5. So that object(instance) can have access to this method .calcAge()
+
+6. "this" point to the object calling the method
+
+
+
+Now, the prototype of the Person function will have a function called calcAge: ƒ ()
+
+console.log(Person.prototype);
+
+
+Later, we call the Person function with "new" to create an object
+
+const jonas = new Person('Jonas', 1990);
+Now, jonas is an object created by Person function. So the __proto__ property of jonas object will inherit from (link to) prototype property of Person function
+
+
+
+So, if you do these two lines of code
+
+console.log(Person.prototype); // see the prototype of Person (constructor function)
+
+
+console.log(Object.getPrototypeOf(jonas)); // see the __proto__ of object
+
+
+You will see the output of these two lines of code are actually same
+
+
+
+And also can be proved by this line of code
+
+console.log(Person.prototype === Object.getPrototypeOf(jonas)); // true
+
+
+I'm just a student like you, so I wouldn't say I'm 100% correct. Just wanna show what I learn from this course so far. Hope this will help you a little bit.
+
+
+
+*/
