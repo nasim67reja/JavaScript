@@ -75,7 +75,7 @@ so it set the __proto__ property on the object to the prototype propertry of the
 Person.prototype 
 */
 // now we can also set property on the property no just method. look bellow
-
+console.dir(Person);
 Person.prototype.species = 'Homo Sapiens';
 console.log(matilda); // matlida.species
 /*However the property or method that are exist in prototype is not connected directly to the object we can check this by */
@@ -201,7 +201,62 @@ console.log(Person.prototype === Object.getPrototypeOf(jonas)); // true
 
 
 I'm just a student like you, so I wouldn't say I'm 100% correct. Just wanna show what I learn from this course so far. Hope this will help you a little bit.
-
-
-
 */
+
+///////////////////////////////////////////////////////////////////////////// Lecture 208 : Prototypal Inheritance on Built in Objects
+
+console.log(matilda.__proto__); // Return the Person.prototype
+console.log(matilda.__proto__.__proto__); // return the Object.prototype
+console.log(matilda.__proto__.__proto__.__proto__); // return null
+// console.log(Person.prototype.constructor === Person);
+
+// For Array :
+Array.prototype.greet = function () {
+  return 'hello world';
+};
+const arr3 = [1, 2, 3, 4, 5, 2, 4, 6, 6]; // new Array === []
+console.log(arr3.__proto__ === Array.prototype); // wow
+console.log(arr3.greet()); // wow awesome now i am feel like a pro developer. we can modify the built in array method .
+
+// Usually not to recommand for doing this . we should always avoid this
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+// console.log(arr3.unique());
+// console.dir(Array.__proto__);
+
+/*Coding Challenge #1
+Your tasks:
+1. Use a constructor function to implement a 'Car'. A car has a 'make' and a
+'speed' property. The 'speed' property is the current speed of the car in
+km/h
+2. Implement an 'accelerate' method that will increase the car's speed by 10,
+and log the new speed to the console
+3. Implement a 'brake' method that will decrease the car's speed by 5, and log
+the new speed to the console
+4. Create 2 'Car' objects and experiment with calling 'accelerate' and
+'brake' multiple times on each of them
+Test data:
+§ Data car 1: 'BMW' going at 120 km/h
+§ Data car 2: 'Mercedes' going at 95 km/h
+GOOD LUCK �*/
+
+const Car = function (make, speed) {
+  this.make = make;
+  this.speed = speed;
+};
+Car.prototype.accelerate = function () {
+  this.speed += 10;
+  return `${this.make} going at ${this.speed} km/h`;
+};
+Car.prototype.brake = function () {
+  this.speed -= 5;
+  return `${this.make} going at ${this.speed} km/h`;
+};
+const car1 = new Car('BMW', 120);
+const car2 = new Car('Mercedes', '95 km/h');
+console.log(car1.accelerate()); // return 130
+console.log(car1.accelerate()); // return 140
+console.log(car1.accelerate()); // return 150
+console.log(car1.brake()); // return 145
+console.log(car1.accelerate()); // return 155
