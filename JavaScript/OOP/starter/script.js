@@ -263,3 +263,60 @@ console.log(car1.accelerate()); // return 140
 console.log(car1.accelerate()); // return 150
 console.log(car1.brake()); // return 145
 console.log(car1.accelerate()); // return 155
+////////////////////////////////////////////////////////////////////////////////////////////////////////// 👉👉👉👉👉👉👉 Lecture : 210 (Es6 Classes)
+// class expression
+/*
+const PersonCl = class {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+};*/
+
+// class declaration
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+  // method
+  calcAge() {
+    return 2021 - this.birthYear;
+  }
+  greet() {
+    return `Hello ${this.firstName}`;
+  }
+}
+// prototype also work here
+PersonCl.prototype.lastName = function (lastName) {
+  return `Hello ${this.firstName} ${lastName}`;
+};
+const nasim = new PersonCl('Nasim', 1997);
+console.log(nasim);
+console.log(nasim.greet());
+console.log(nasim.calcAge());
+console.log(nasim.lastName('Reja'));
+
+/// Note that:
+/*
+1. classes are not hoisted
+2. Classes are first-class citizen
+3. Classes are executed in strict mode
+*/
+////////////////////////////////////////////////////////////////////////////////////////////////////// Lecture : 211 => Getters and setters
+const student = {
+  firstName: 'Jhon',
+  lastName: 'Smith',
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  },
+  set fullName(value) {
+    const parts = value.split(' ');
+    this.firstName = parts[0];
+    this.lastName = parts[1];
+  },
+};
+student.fullName = 'Jhon smigla';
+// getters => access properties
+// seters => change (mutate) them
+console.log(student.fullName); // Understand the purpose of getter
