@@ -256,6 +256,12 @@ Car.prototype.brake = function () {
 Car.prototype.printName = function () {
   return `${this.make} going at ${this.speed} km/h`;
 };
+// static method
+Car.love = function () {
+  return `All people loves to drive car`;
+};
+console.log(Car.love());
+
 const car1 = new Car('BMW', 120);
 const car2 = new Car('Mercedes', '95 km/h');
 console.log(car1.accelerate()); // return 130
@@ -263,6 +269,7 @@ console.log(car1.accelerate()); // return 140
 console.log(car1.accelerate()); // return 150
 console.log(car1.brake()); // return 145
 console.log(car1.accelerate()); // return 155
+// console.log(car1.love()); // thrown an Error
 ////////////////////////////////////////////////////////////////////////////////////////////////////////// 👉👉👉👉👉👉👉 Lecture : 210 (Es6 Classes)
 // class expression
 /*
@@ -285,6 +292,9 @@ class PersonCl {
   }
   greet() {
     return `Hello ${this.firstName}`;
+  }
+  static program() {
+    return `We love JavaScript`;
   }
 }
 // prototype also work here
@@ -320,3 +330,34 @@ student.fullName = 'Jhon smigla';
 // getters => access properties
 // seters => change (mutate) them
 console.log(student.fullName); // Understand the purpose of getter
+////////////////////////////////////////////////////////////////////////////////////////////////////// Lecture : 212 => Static method
+// keep that in mind Array.from() is a static method which one's is only avialable for Array constructor not for the array object which one are created from Array  ex: [2,1,23].from() => thorow an error on the console
+// look at the previous code 👆👆👆👆👆👆👆👆
+// console.log(nasim.program()); // return a TypeError
+console.log(PersonCl.program()); // for using the static keyword this one are not exist inside the prototype
+
+////////////////////////////////////////////////////////////////////////////////////////////////////// Lecture : 213 => Object.create()
+// this object literal works like a prototype of another object
+const PersonProto = {
+  calcAge() {
+    return 2021 - this.birthYear;
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+const steven = Object.create(PersonProto);
+// console.log(steven); // look at the console PersonProto object and calcAge() function will be found in the steven.__proto__
+console.log(steven.__proto__ === PersonProto); // return true
+steven.name = 'Steven';
+steven.birthYear = 1997;
+console.log(steven.calcAge());
+
+// another person
+
+const sarah = Object.create(PersonProto);
+sarah.init('Sarah', 1979);
+console.log(sarah.calcAge());
