@@ -247,10 +247,13 @@ const Car = function (make, speed) {
 };
 Car.prototype.accelerate = function () {
   this.speed += 10;
-  return `${this.make} going at ${this.speed} km/h`;
+  return this.printName();
 };
 Car.prototype.brake = function () {
   this.speed -= 5;
+  return this.printName();
+};
+Car.prototype.printName = function () {
   return `${this.make} going at ${this.speed} km/h`;
 };
 const car1 = new Car('BMW', 120);
