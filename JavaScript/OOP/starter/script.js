@@ -383,3 +383,40 @@ const CarCl = class {
 const ford = new CarCl('Ford', 120);
 ford.speedUs = 50;
 console.log(ford);
+/////////////////////////////////////////////////////////////////////////////////////////// Lecture - 215 : Inheritance Between "classes": Constructor function
+const Person2 = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+Person2.prototype.calcAge = function () {
+  return 2021 - this.birthYear;
+};
+
+const Student1 = function (firstName, birthYear, course) {
+  // this.firstName = firstName;
+  // this.birthYear = birthYear; // this ones is same as the Person2 class and this is not a good idea. it is violet our dry principle(don't repeat your code)
+  // 2. Imagine you update your Person2 class in future than you have manually update your student class as also. in large code bases it create a huge problem
+  Person2.call(this, firstName, birthYear);
+  this.course = course;
+};
+// Linking Prototypes
+Student1.prototype = Object.create(Person2.prototype); // now student prototype will be the person prototype and all student can access the method which ones are exist in Person's prototype
+// now we have to create this connection here before we add any more methods to the prototype object of student. And that's becasue Object.create() will return an empty object . So at this point Student1.prototype is empty. SO then onto that empty object we can add methods like introduce(below). But if we use after the introduce method then Object.create() overwrite the method
+
+Student1.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+const mike = new Student1('Mike', 1997, 'Computer Science');
+mike.introduce();
+
+console.log(mike.__proto__ === Person2.prototype);
+console.log(mike.__proto__ === Student1.prototype);
+
+console.log(mike.__proto__.__proto__);
+
+console.dir(Student1.prototype.constructor); // return Person1 for fix this use
+Student1.prototype.constructor = Student1;
+console.log(
+  (mike instanceof Object === mike instanceof Person2) ===
+    mike instanceof Student1
+); // return true
