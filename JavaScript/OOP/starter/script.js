@@ -547,3 +547,61 @@ child.init = function (fname, age, weight) {
 };
 child.init('Aliyar', 5, 12);
 child.eat();
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////// Lecture 219 : Another class example
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Lecture :220 => Encapsulation ; protected properties and methods
+
+/*
+Encapsulation, basically means to keep some properties and methods privat inside the class. So, they are not acceseble from outside of the class. then the rest of the method are basically exposed as a public interface which we can also call API
+There two big reason exist :
+first=> it is to prevent code from outside of a class to accidently manipulate or data inside the class 
+second => when we exposed only a small interface , so a small API consisting only of a few public methods then we can change all the other internal methods with more confidence
+because in this case , we can be sure that external code does not relay on this private method and so therefor our code will not brake  when we do enternal changes
+// JavaScript classes actually do not yet support real data privacy and Encapsulation now there is a proposal to add truely private class fields and methods to the language but it not completely ready yet
+we can also fake Encapsulation by simple using a convention
+*/
+class Account {
+  constructor(owner, currency, pin, movements) {
+    this.owner = owner;
+    this.currency = currency;
+    this._pin = pin;
+    // Protected property
+    this._movements = [];
+    this.local = navigator.language;
+    console.log(`Thanks for opening an account , ${this.owner}`);
+  }
+  // public interface
+  getMovements() {
+    /// now if  we still wanted to get access to the movements array from the outside then we have to implement a public method for that
+    return this._movements;
+  }
+
+  deposit(val) {
+    this._movements.push(val);
+  }
+  withdraw(val) {
+    this.deposit(-val);
+  }
+  _approveLoan(val) {
+    return true;
+  }
+  requestLoad(val) {
+    if (this.approveLoan(val)) {
+      this.deposit(val);
+    }
+  }
+}
+
+const acc1 = new Account('Jonas', 'EUR', 1111);
+acc1.deposit(250);
+acc1.withdraw(140);
+acc1.requestLoad(1000);
+acc1.approveLoan(100); // we should still acceseble to the data . but normally we don't have the access to get data outside from the class. so the point is we actually need the data  validation
+// acc1.movements.push(200) // now we can not access the movements like this;
+// acc1._movements.push(200); // But we can still access this like this . that's why it is called fake Encapsulation
+
+console.log(acc1);
+// console.log(acc1.pin); // return the pin. it should not be availabe outside of the class
+console.log(acc1.getMovements()); // we can access the movements but can not overwrite the movements
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Lecture :220 => Encapsulation ; Private class fields and methods
