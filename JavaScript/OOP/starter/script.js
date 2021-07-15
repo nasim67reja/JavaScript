@@ -560,33 +560,60 @@ because in this case , we can be sure that external code does not relay on this 
 // JavaScript classes actually do not yet support real data privacy and Encapsulation now there is a proposal to add truely private class fields and methods to the language but it not completely ready yet
 we can also fake Encapsulation by simple using a convention
 */
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Lecture :220 => Encapsulation ; Private class fields and methods
+/*
+So, Private class fields and methods are actually part of a bigger proposal for improving and changing JavaScript Classes which is simply called Class fields. Now this
+Class fields proposal currently at stage-3  and so right now it actually not get part of the JavaScript language. However, being at stage 3 means that is very likely that it somepoint it will forward to stage  number 4 and then it will actually become a part of the JavaScript language. 
+In this Proposal there are actually four different kinds of fields and methods (actually eight)
+=> 1. Public fields
+=> 2. Private fields
+=> 3. Public methods
+=> 4. Private methods
+
+1. Public fields :  So we can think of a field as a property that will be on all instances . So that's why we can also call this a public instance field 
+
+*/
 class Account {
+  // public fields // they are not on the prototype because they are instances
+  locale = navigator.language; // note there semicolon and don't declare with const or let
+
+  // 2 . Private fields :
+  #movements = []; // # symbol makes a property private
+  #pin; // just like creating an empty variable
+
   constructor(owner, currency, pin, movements) {
     this.owner = owner;
     this.currency = currency;
-    this._pin = pin;
+    this.#pin = pin;
     // Protected property
-    this._movements = [];
-    this.local = navigator.language;
+    // this._movements = [];
+    // this.local = navigator.language;
     console.log(`Thanks for opening an account , ${this.owner}`);
   }
+
+  // All these method that has been using so far are Public methods
   // public interface
   getMovements() {
     /// now if  we still wanted to get access to the movements array from the outside then we have to implement a public method for that
-    return this._movements;
+    return this.#movements;
   }
 
   deposit(val) {
-    this._movements.push(val);
+    this.#movements.push(val);
   }
+
   withdraw(val) {
     this.deposit(-val);
   }
+  // Private methods :
+  // #approveLoan(val) {
   _approveLoan(val) {
     return true;
   }
   requestLoad(val) {
-    if (this.approveLoan(val)) {
+    // if (this.#approveLoan(val)) {
+    if (this._approveLoan(val)) {
       this.deposit(val);
     }
   }
@@ -596,12 +623,12 @@ const acc1 = new Account('Jonas', 'EUR', 1111);
 acc1.deposit(250);
 acc1.withdraw(140);
 acc1.requestLoad(1000);
-acc1.approveLoan(100); // we should still acceseble to the data . but normally we don't have the access to get data outside from the class. so the point is we actually need the data  validation
+// acc1.approveLoan(100); // we should still acceseble to the data . but normally we don't have the access to get data outside from the class. so the point is we actually need the data  validation
 // acc1.movements.push(200) // now we can not access the movements like this;
 // acc1._movements.push(200); // But we can still access this like this . that's why it is called fake Encapsulation
 
 console.log(acc1);
-// console.log(acc1.pin); // return the pin. it should not be availabe outside of the class
-console.log(acc1.getMovements()); // we can access the movements but can not overwrite the movements
+// console.log(acc1.#movements);
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Lecture :220 => Encapsulation ; Private class fields and methods
+// console.log(acc1.pin); // return the pin. it should not be availabe outside of the class
+// console.log(acc1.getMovements()); // we can access the movements but can not overwrite the movements
