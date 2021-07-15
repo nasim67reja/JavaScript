@@ -118,24 +118,15 @@ The difference between __proto__ and prototype
 prototype
 
 1. Each function in JS will automatically have an property called prototype, which includes constructor function
-
 2. prorotype is an property in (constructor) function which contains all the stuff that that will be inherited by it's instance
-
 3. Every object created by a constructor function will be able to get access to all the methods and properties that define on the prototype property of the constructor function
-
 4. By this way, we don't need to set the method on every object. Instead, we only set the method once on the prototype of constructor function. Then all the object created by this constructor function will have access to that method
-
-
 
 __proto__
 
 1. Every object in JS will have a property called __proto__
-
 2. The __proto__ property of object is essentially the prototype property of the constructor function that create the object
-
 3. In other words, __proto__ of object is as same as prototype of function which create that object
-
-
 
 Let's review the code in this lecturer
 
@@ -144,11 +135,8 @@ const Person = function (firstName, birthYear) {
   this.birthYear = birthYear;
 };
 First, we create a constructor function called Person.
-
 At this time, the prototype of this function has nothing (not indeed empty actually)
-
 console.log(Person.prototype);
-
 
 Then, we create a method on the prototype of Person
 
@@ -158,48 +146,26 @@ Person.prototype.calcAge = function () {
 Break it down a little bit
 
 1.  Person is a constructor function
-
 2. "prototype" is one of the property in the Person constructor function
-
 3.  then we define a method called calcAge on that "prototype" property
-
 4.  All the object(instance) created by Person constructor function will inheirt it's prototype
-
 5. So that object(instance) can have access to this method .calcAge()
-
 6. "this" point to the object calling the method
 
-
-
 Now, the prototype of the Person function will have a function called calcAge: ƒ ()
-
 console.log(Person.prototype);
-
 
 Later, we call the Person function with "new" to create an object
 
 const jonas = new Person('Jonas', 1990);
 Now, jonas is an object created by Person function. So the __proto__ property of jonas object will inherit from (link to) prototype property of Person function
 
-
-
 So, if you do these two lines of code
-
 console.log(Person.prototype); // see the prototype of Person (constructor function)
-
-
 console.log(Object.getPrototypeOf(jonas)); // see the __proto__ of object
-
-
 You will see the output of these two lines of code are actually same
-
-
-
 And also can be proved by this line of code
-
 console.log(Person.prototype === Object.getPrototypeOf(jonas)); // true
-
-
 I'm just a student like you, so I wouldn't say I'm 100% correct. Just wanna show what I learn from this course so far. Hope this will help you a little bit.
 */
 
@@ -361,3 +327,59 @@ console.log(steven.calcAge());
 const sarah = Object.create(PersonProto);
 sarah.init('Sarah', 1979);
 console.log(sarah.calcAge());
+///////////////////////////////////////////////////////////////////////////////////////////  :
+
+const Employer = class {
+  constructor(firstName, position) {
+    this.firstName = firstName.toLowerCase();
+    this.position = position.toLowerCase();
+  }
+  get money() {
+    if (this.position === 'developer')
+      return `Hello ${this.firstName} .Your monthly fee is 20k doller per year`;
+    else if (this.position === 'hacker')
+      return `Hello ${this.firstName} .Your monthly fee is 19k doller per year`;
+    else if (this.position === 'programmer')
+      return `Hello ${this.firstName} .Your monthly fee is 18k doller per year`;
+    else return `There are no jobs in ${this.position} position`;
+  }
+  get inform() {
+    return `${this.firstName}  ${this.position}`;
+  }
+  set inform(val) {
+    const [first, second] = val.split(' ');
+    this.firstName = first;
+    this.position = second;
+  }
+};
+const nasimReja = new Employer('Nasim', 'developer');
+const nusratNipa = new Employer('Nipa', 'hacker');
+console.log(nusratNipa.money);
+console.log(nasimReja.money);
+console.log(nasimReja.inform);
+nasimReja.inform = 'Leon Programmer';
+console.log(nasimReja.inform);
+/////////////////////////////////////////////////////////////////////////////////////////// Challenge 2 :
+
+const CarCl = class {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+  accelerate() {
+    return (this.speed += 10);
+  }
+  brake() {
+    return (this.speed -= 5);
+  }
+  get speedUs() {
+    return `${this.speed / 1.6} mi/h`;
+  }
+  set speedUs(num) {
+    this.speed = num * 1.6;
+  }
+};
+
+const ford = new CarCl('Ford', 120);
+ford.speedUs = 50;
+console.log(ford);
