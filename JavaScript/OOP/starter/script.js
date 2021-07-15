@@ -206,7 +206,7 @@ Test data:
 § Data car 1: 'BMW' going at 120 km/h
 § Data car 2: 'Mercedes' going at 95 km/h
 GOOD LUCK �*/
-
+/*
 const Car = function (make, speed) {
   this.make = make;
   this.speed = speed;
@@ -235,7 +235,7 @@ console.log(car1.accelerate()); // return 140
 console.log(car1.accelerate()); // return 150
 console.log(car1.brake()); // return 145
 console.log(car1.accelerate()); // return 155
-// console.log(car1.love()); // thrown an Error
+// console.log(car1.love()); // thrown an Error*/
 ////////////////////////////////////////////////////////////////////////////////////////////////////////// 👉👉👉👉👉👉👉 Lecture : 210 (Es6 Classes)
 // class expression
 /*
@@ -420,3 +420,130 @@ console.log(
   (mike instanceof Object === mike instanceof Person2) ===
     mike instanceof Student1
 ); // return true
+/*Coding Challenge #3
+Your tasks:
+1. Use a constructor function to implement an Electric Car (called 'EV') as a child
+"class" of 'Car'. Besides a make and current speed, the 'EV' also has the
+current battery charge in % ('charge' property)
+2. Implement a 'chargeBattery' method which takes an argument
+'chargeTo' and sets the battery charge to 'chargeTo'
+3. Implement an 'accelerate' method that will increase the car's speed by 20,
+and decrease the charge by 1%. Then log a message like this: 'Tesla going at 140
+km/h, with a charge of 22%'
+4. Create an electric car object and experiment with calling 'accelerate',
+'brake' and 'chargeBattery' (charge to 90%). Notice what happens when
+you 'accelerate'! Hint: Review the definiton of polymorphism �
+Test data:
+§ Data car 1: 'Tesla' going at 120 km/h, with a charge of 23%
+GOOD LUCK �*/
+/*
+const Car = function (make, speed) {
+  this.make = make;
+  this.speed = speed;
+};
+Car.prototype.accelerate = function () {
+  this.speed += 10;
+  console.log(`${this.make} is going at ${this.speed} km/h`);
+};
+Car.prototype.brake = function () {
+  this.speed -= 5;
+  console.log(`${this.make} is going at ${this.speed} km/h`);
+};
+const EV = function (make, speed, charge) {
+  Car.call(this, make, speed);
+  this.charge = charge;
+};
+EV.prototype = Object.create(Car.prototype);
+
+EV.prototype.chargeBattery = function (chargeTo) {
+  this.charge = chargeTo;
+};
+EV.prototype.accelerate = function () {
+  this.speed += 20;
+  this.charge--;
+  console.log(
+    `${this.make} going at ${this.speed} km/h, with a charge of ${this.charge}%`
+  );
+};
+const tesla = new EV('Tesla', 120, 23);
+
+// tesla.accelerate();
+tesla.chargeBattery(90);
+console.dir(tesla.__proto__ === EV.prototype);
+console.dir(tesla.__proto__ === Car.prototype);
+
+tesla.accelerate();
+tesla.accelerate(); // Example of polymorphism
+// tesla.brake();
+*/
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Inheritance with  ES6 classes :
+class Car {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+  }
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+  }
+}
+
+// child class
+class EV extends Car {
+  constructor(make, speed, charge) {
+    // Car.constructor.call(this, make, speed);
+    // Always needs to happen first :
+    super(make, speed);
+    this.charge = charge;
+  }
+  chargeBattery(chargeTo) {
+    this.charge = chargeTo;
+  }
+  accelerate() {
+    this.speed += 20;
+    this.charge--;
+    console.log(
+      `${this.make} going at ${this.speed} km/h, with a charge of ${this.charge}%`
+    );
+  }
+}
+
+const tesla = new EV('Tesla', 120, 23);
+tesla.accelerate();
+tesla.chargeBattery(90);
+console.log(tesla);
+tesla.accelerate();
+tesla.accelerate(); // Example of polymorphism
+tesla.brake();
+//////////////////////////////////////////////////////////////////////////// Inheritance with Object.create()
+
+const Man = {
+  eat() {
+    console.log(
+      `${this.fname}  needs to eat ${
+        this.age > 24 ? 'less' : 'more'
+      } food depend on his age`
+    );
+  },
+  init(fname, age) {
+    this.fname = fname;
+    this.age = age;
+  },
+};
+
+// Understand the logic
+const nasimr = Object.create(Man);
+nasimr.init('Nasim Reja', 24);
+nasimr.eat();
+const child = Object.create(nasimr);
+child.init = function (fname, age, weight) {
+  nasimr.init.call(this, fname, age);
+  this.weight = weight;
+};
+child.init('Aliyar', 5, 12);
+child.eat();
