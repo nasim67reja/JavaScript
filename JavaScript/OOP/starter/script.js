@@ -478,6 +478,7 @@ tesla.accelerate(); // Example of polymorphism
 */
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Inheritance with  ES6 classes :
+/*
 class Car {
   constructor(make, speed) {
     this.make = make;
@@ -520,6 +521,7 @@ console.log(tesla);
 tesla.accelerate();
 tesla.accelerate(); // Example of polymorphism
 tesla.brake();
+*/
 //////////////////////////////////////////////////////////////////////////// Inheritance with Object.create()
 
 const Man = {
@@ -574,6 +576,8 @@ In this Proposal there are actually four different kinds of fields and methods (
 1. Public fields :  So we can think of a field as a property that will be on all instances . So that's why we can also call this a public instance field 
 
 */
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// Lecture 222 : chaining
+
 class Account {
   // public fields // they are not on the prototype because they are instances
   locale = navigator.language; // note there semicolon and don't declare with const or let
@@ -601,10 +605,12 @@ class Account {
 
   deposit(val) {
     this.#movements.push(val);
+    return this;
   }
 
   withdraw(val) {
     this.deposit(-val);
+    return this;
   }
   // Private methods :
   // #approveLoan(val) {
@@ -615,6 +621,7 @@ class Account {
     // if (this.#approveLoan(val)) {
     if (this._approveLoan(val)) {
       this.deposit(val);
+      return this;
     }
   }
 }
@@ -632,3 +639,70 @@ console.log(acc1);
 
 // console.log(acc1.pin); // return the pin. it should not be availabe outside of the class
 // console.log(acc1.getMovements()); // we can access the movements but can not overwrite the movements
+
+// chaining
+acc1.deposit(200).withdraw(100).requestLoad(500);
+console.log(acc1.getMovements());
+
+/*Coding Challenge #4
+Your tasks:
+1. Re-create Challenge #3, but this time using ES6 classes: create an 'EVCl'
+child class of the 'CarCl' class
+2. Make the 'charge' property private
+3. Implement the ability to chain the 'accelerate' and 'chargeBattery'
+methods of this class, and also update the 'brake' method in the 'CarCl'
+class. Then experiment with chaining!
+Test data:
+§ Data car 1: 'Rivian' going at 120 km/h, with a charge of 23%
+GOOD LUCK �*/
+
+class CarCls {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+    return this;
+  }
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+    return this;
+  }
+}
+
+// child class
+class EVCl extends CarCls {
+  #charge;
+  constructor(make, speed, charge) {
+    // Car.constructor.call(this, make, speed);
+    // Always needs to happen first :
+    super(make, speed);
+    this.#charge = charge;
+  }
+  chargeBattery(chargeTo) {
+    this.#charge = chargeTo;
+    return this;
+  }
+  accelerate() {
+    this.speed += 20;
+    this.#charge--;
+    console.log(
+      `${this.make} going at ${this.speed} km/h, with a charge of ${
+        this.#charge
+      }%`
+    );
+    return this;
+  }
+}
+
+const tesla = new EVCl('Rivian', 120, 23);
+tesla.accelerate();
+// tesla.chargeBattery(90);
+// console.log(tesla);
+// tesla.accelerate();
+// tesla.accelerate(); // Example of polymorphism
+// tesla.brake();
+tesla.chargeBattery(90).accelerate().brake().accelerate().accelerate().brake();
