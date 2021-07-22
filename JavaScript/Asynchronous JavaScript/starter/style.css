@@ -18,6 +18,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 3rem;
 }
 
 .container {
@@ -29,7 +30,9 @@ body {
 .countries {
   /* margin-bottom: 8rem; */
   display: flex;
-
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 5rem;
   font-size: 2rem;
   opacity: 0;
   transition: opacity 1s;
