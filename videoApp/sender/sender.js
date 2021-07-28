@@ -1,28 +1,37 @@
-'use strict';
+const webSocket = new WebSocket('ws://SERVER-IP-HERE:3000');
 
-const btnlist = document.querySelectorAll('.btn');
-const inputValue = document.querySelector('input');
-const vedioPage = document.querySelector('#vedio--call');
+webSocket.onmessage = event => {
+  handleSignallingData(JSON.parse(event.data));
+};
 
-// const webSocket = new WebSocket('');
-// const webSocket = new WebSocket('ws://SERVER-IP-HERE:3000');
-let userName;
+function handleSignallingData(data) {
+  switch (data.type) {
+    case 'answer':
+      peerConn.setRemoteDescription(data.answer);
+      break;
+    case 'candidate':
+      peerConn.addIceCandidate(data.candidate);
+  }
+}
 
-btnlist[0].addEventListener('click', function () {
-  userName = inputValue.value;
+let username;
+function sendUsername() {
+  username = document.getElementById('username-input').value;
   sendData({
-    type: 'store_user', // 'store_offer' ,'store-candidates'
+    type: 'store_user',
   });
-});
+}
+
 function sendData(data) {
-  data.userName = userName;
+  data.username = username;
   webSocket.send(JSON.stringify(data));
 }
 
-let lcoalStream;
-btnlist[1].addEventListener('click', function () {
-  vedioPage.style.display = 'inline';
-  // create vedio for local computer
+let localStream;
+let peerConn;
+function startCall() {
+  document.getElementById('video-call-div').style.display = 'inline';
+
   navigator.getUserMedia(
     {
       video: {
@@ -73,4 +82,33 @@ btnlist[1].addEventListener('click', function () {
       console.log(error);
     }
   );
-});
+}
+
+//////////////////////////////////
+function createAndSendOffer() {
+  peerConn.createOffer(
+    offer => {
+      sendData({
+        type: 'store_offer',
+        offer: offer,
+      });
+
+      peerConn.setLocalDescription(offer);
+    },
+    error => {
+      console.log(error);
+    }
+  );
+}
+
+let isAudio = true;
+function muteAudio() {
+  isAudio = !isAudio;
+  localStream.getAudioTracks()[0].enabled = isAudio;
+}
+
+let isVideo = true;
+function muteVideo() {
+  isVideo = !isVideo;
+  localStream.getVideoTracks()[0].enabled = isVideo;
+}
