@@ -245,3 +245,47 @@ document.querySelector('.nav').addEventListener('click', function (e) {
 */
 //////////////////////////////////////
 ///////////////////////////////////////
+
+///////////////////////////////////////
+// 👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉DOM Traversing 👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉
+
+///////////
+/* Dom Traversing means basically walking through the dom which means we can select and element based on another element and this is very importance because sometimes
+we need to select  elements relative to a certain other element for example , a direct
+child or a direct parent element or sometimes we don't even know the structure 
+of the dom at runtime and all this cases we need dom traversing
+*/
+/*
+const h1 = document.querySelector('h1');
+
+//🔥🔥🔥 Going downwards: child
+console.log(h1.querySelectorAll('.highlight'));     // querySelector also works on elements // it will work for all children but not for there which once are not children of h1
+console.log(h1.childNodes);       // only for direct children. nodes can be anything
+console.log(h1.children);         // gives only element(only for direct children)(html collection{live collection})
+h1.firstElementChild.style.color = 'white';         // only first child will be white
+h1.lastElementChild.style.color = 'orangered';       // this is for last child
+
+//🔥🔥🔥 Going upwards: parents
+console.log(h1.parentNode); // return direct parent
+console.log(h1.parentElement);
+
+//if we need the element which is not direct parent(no matter how far from dom tree) then we can use closest() method
+// let's imagine we had multiple header class element but we need only those header which once are parent of h1 element.For this we can use closest method. it is like querySelector
+
+h1.closest('.header').style.background = 'var(--gradient-secondary)'; // 📝📝📝 this is very important. understand this
+
+h1.closest('h1').style.background = 'var(--gradient-primary)'; // that's gonne be the element itself
+
+//🔥🔥🔥 Going sideways: siblings (we can access only direct siblings.previous and next one)
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
+
+console.log(h1.previousSibling);
+console.log(h1.nextSibling);
+
+console.log(h1.parentElement.children); // if we need all the sibling then we can use this trick
+[...h1.parentElement.children].forEach(function (el) {
+  if (el !== h1) el.style.transform = 'scale(0.5)';
+});
+*/
+///////////////////////////////////////
