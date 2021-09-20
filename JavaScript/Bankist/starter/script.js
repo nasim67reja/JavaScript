@@ -39,7 +39,8 @@ document.addEventListener('keydown', function (e) {
 });
 
 ///////////////////////////////////////
-
+//////////////////////////////////////
+//////////////////////////////////////
 // 👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉  Button scrolling : 👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉
 
 btnScrollTo.addEventListener('click', function (e) {
@@ -78,7 +79,33 @@ btnScrollTo.addEventListener('click', function (e) {
 ///////////////////////////////////////
 ///////////////////////////////////////
 ///////////////////////////////////////
+///////////////////////////////////////
+//👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉 Page navigation👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉
 
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href');
+//     console.log(id);
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });                      // this is right but imagine we need to add this handler function to 100+ element then the perfomence of the web will be very poor. that's why
+// we need to attach the handler function in the parent element.Then the event will bubble up and we will catch the event in the parent section of the target element
+
+// 1. Add event listener to common parent element
+// 2. Determine what element originated the event
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+
+  // Matching strategy
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});
+
+///////////////////////////////////////
 ///////////////////////////////////////
 // 👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉 Selecting, Creating, and Deleting Elements 👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉
 /*
@@ -169,6 +196,9 @@ logo.classList.contains('c'); // not includes
 // Don't use
 logo.clasName = 'jonas';
 */
+
+///////////////////////////////////////
+///////////////////////////////////////
 ///////////////////////////////////////
 //👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉 Types of Events and Event Handlers
 
@@ -185,3 +215,33 @@ logo.clasName = 'jonas';
 // h1.onmouseenter = function (e) {
 //   alert('onmouseenter: Great! You are reading the heading :D');
 //};
+
+///////////////////////////////////////
+//👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉 Event Propagation in Practice👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉
+/*
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+
+document.querySelector('.nav__link').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('LINK', e.target, e.currentTarget);
+  console.log(e.currentTarget === this);
+
+  // Stop propagation
+  // e.stopPropagation();
+});
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('CONTAINER', e.target, e.currentTarget);
+});
+
+document.querySelector('.nav').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('NAV', e.target, e.currentTarget);
+});
+*/
+//////////////////////////////////////
+///////////////////////////////////////
