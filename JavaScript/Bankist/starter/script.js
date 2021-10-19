@@ -107,6 +107,13 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 
 ///////////////////////////////////////
 ///////////////////////////////////////
+
+///////////////////////////////////////
+///////////////////////////////////////
+///////////////////////////////////////
+///////////////////////////////////////
+///////////////////////////////////////
+///////////////////////////////////////
 // 👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉 Selecting, Creating, and Deleting Elements 👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉👉
 /*
 // Selecting elements
@@ -147,6 +154,7 @@ document
   });
 
 ///////////////////////////////////////
+// 😶😶😶😶😶😶😶😶😶😶😶😶😶😶😶😶😶😶
 //  Styles, Attributes and Classes 
 
 // Styles
@@ -165,15 +173,15 @@ message.style.height =
 
 document.documentElement.style.setProperty('--color-primary', 'orangered');
 
-// Attributes
+// 📝📝📝📝  Attributes
 const logo = document.querySelector('.nav__logo');
 console.log(logo.alt);
 console.log(logo.className);
 
 logo.alt = 'Beautiful minimalist logo';
 
-// Non-standard
-console.log(logo.designer);
+// 📝📝📝📝   Non-standard
+console.log(logo.designer); // return undefined
 console.log(logo.getAttribute('designer'));
 logo.setAttribute('company', 'Bankist');
 
