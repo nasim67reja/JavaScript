@@ -234,7 +234,8 @@ const randomColor = () =>
 
 document.querySelector('.nav__link').addEventListener('click', function (e) {
   this.style.backgroundColor = randomColor();
-  console.log('LINK', e.target, e.currentTarget);
+  console.log('LINK', e.target, e.currentTarget); // here e.target shows where the event is generated in this case nav__link element
+  // e.currentTarget = the current target is indeed where the event handlers is attach
   console.log(e.currentTarget === this);
 
   // Stop propagation
