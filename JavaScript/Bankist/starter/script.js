@@ -105,9 +105,35 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 });
 
-///////////////////////////////////////
-///////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////////////////////////
+// //// 👉👉👉👉👉👉👉👉👉👉👉👉👉👉    Building The Tab component// //// 👉👉👉👉👉👉👉👉👉👉👉👉👉👉
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContent = document.querySelectorAll('.operations__content');
 
+tabsContainer.addEventListener('click', function (e) {
+  // event delegation for more see the lecture 189 or note
+  const clicked = e.target.closest('.operations__tab'); // closest is use for span element
+  // console.log(clicked);
+  // Guard clause
+  if (!clicked) return; //more modern way. if the clicked valu is null then the function will be imidiatly finished
+
+  //Remove active classes
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+
+  // Activate tab
+  clicked.classList.add('operations__tab--active');
+
+  //Activate content area
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
+});
+
+///////////////////////////////////////
+///////////////////////////////////////
+// 😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊
 ///////////////////////////////////////
 ///////////////////////////////////////
 ///////////////////////////////////////
