@@ -209,7 +209,7 @@ allSections.forEach(function (section) {
   section.classList.add('section--hidden');
 });
 
-// 🦥🦥🦥🦥🦥🦥🦥🦥🦥🦥🦥🦥🦥🦥   Lazy loading images
+// 🦥🦥🦥🦥🦥🦥🦥🦥🦥🦥🦥🦥🦥🦥 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥  Lazy loading images
 const imgTargets = document.querySelectorAll('img[data-src]');
 
 const loadImg = function (entries, observer) {
@@ -237,7 +237,7 @@ imgTargets.forEach(img => imgObserver.observe(img));
 
 ///////////////////////////////////////
 
-// //// 👉👉👉👉👉👉👉👉👉👉👉👉👉👉    Building The Tab component// //// 👉👉👉👉👉👉👉👉👉👉👉👉👉👉
+// //// 👉👉👉👉👉👉👉👉👉👉👉👉👉👉🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥    Building The Tab component// //// 👉👉👉👉👉👉👉👉👉👉👉👉👉👉
 const tabsContainer = document.querySelector('.operations__tab-container');
 const tabs = document.querySelectorAll('.operations__tab');
 const tabsContent = document.querySelectorAll('.operations__content');
@@ -283,7 +283,7 @@ const allSections = document.querySelectorAll('.section');
 console.log(allSections);
 
 document.getElementById('section--1');
-const allButtons = document.getElementsByTagName('button');
+const allButtons = document.getElementsByTagName('button'); // ⚠⚠⚠ getElementsByTagName returns a html live collection 
 console.log(allButtons);
 
 console.log(document.getElementsByClassName('btn'));
@@ -342,8 +342,9 @@ console.log(logo.designer); // return undefined
 console.log(logo.getAttribute('designer'));
 logo.setAttribute('company', 'Bankist');
 
-console.log(logo.src);
-console.log(logo.getAttribute('src'));
+console.log(logo.src); // this will be return absolute url 
+console.log(logo.getAttribute('src')); // this will be return relative url
+
 // we can change the image with the help of getAttribute(change the src file) by clicking 
 const link = document.querySelector('.nav__link--btn');
 console.log(link.href);
@@ -436,7 +437,7 @@ console.log(h1.parentNode); // return direct parent
 console.log(h1.parentElement);
 
 //if we need the element which is not direct parent(no matter how far from dom tree) then we can use closest() method
-// let's imagine we had multiple header class element but we need only those header which once are parent of h1 element.For this we can use closest method. it is like querySelector
+// let's imagine we had multiple header class element but we need only those header which once are parent of h1 element.For this we can use closest method. it is like querySelector.q.s find the children no matter how far the children are besides closest find the parent no matter how far the parent are
 
 h1.closest('.header').style.background = 'var(--gradient-secondary)'; // 📝📝📝 this is very important. understand this
 
