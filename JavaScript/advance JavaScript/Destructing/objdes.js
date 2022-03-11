@@ -1,9 +1,9 @@
 //  1 . Basic Object Destructuring :
 const student = {
-  fName: "Noyon",
-  id: 1806112,
+  fName: 'Nasim',
+  id: 1806096,
   session: 2018,
-  department: "Fisheries",
+  department: 'Fisheries',
 };
 
 const { fName, id, session, department } = student;
@@ -26,9 +26,9 @@ let bangla, english, math;
 //  3.Using a new Variable Name:
 // If we want to assign values of an object to a new variable instead of using the name of the property, we can do this:
 const product = {
-  productName: "Furniture",
+  productName: 'Furniture',
   quantity: 5,
-  madeOf: "wood",
+  madeOf: 'wood',
 };
 const { productName: Name, quantity, madeOf: by } = product;
 
@@ -43,20 +43,20 @@ const { cricketBat: bat, football, badminton: racket, ball = -1 } = market;
 
 // 5. Computed Property Name :
 const wordTranslator = {
-  play: "khela",
-  rain: "bristy",
-  eat: "khawa",
+  play: 'khela',
+  rain: 'bristy',
+  eat: 'khawa',
 };
-let userInput = "play";
+let userInput = 'play';
 let { [userInput]: foo, rain, eat } = wordTranslator; // little bit problem here
 // console.log(foo);
 
 // 6. Combining Arrays with Objects :
 ////////////Arrays can also be used with objects in object destructuring:
 const infoNasim = {
-  Nationality: "Bangladesh",
-  Religion: "Muslim",
-  Ocupation: ["Programmar", "Student"],
+  Nationality: 'Bangladesh',
+  Religion: 'Muslim',
+  Ocupation: ['Programmar', 'Student'],
 };
 const {
   Nationality,
@@ -68,12 +68,12 @@ const {
 
 // 7. Nesting in Object Destructing :
 const person = {
-  name: "Sarah",
+  name: 'Sarah',
   place: {
-    country: "Nigeria",
-    city: "Lagos",
+    country: 'Nigeria',
+    city: 'Lagos',
   },
-  friends: ["Annie", "Becky"],
+  friends: ['Annie', 'Becky'],
 };
 
 const {
@@ -87,10 +87,10 @@ console.log(f, s);
 // The rest syntax can also be used to pick up property keys
 // that are not already picked up by the destructuring pattern. Those keys and their values are copied into a new object:
 const me = {
-  Name1: "Nasim",
-  country: "Bangladesh",
-  job: "Developer",
-  dream: ["programmer", "cyber security specialist"],
+  Name1: 'Nasim',
+  country: 'Bangladesh',
+  job: 'Developer',
+  dream: ['programmer', 'cyber security specialist'],
 };
 const { Name1, ...others } = me;
 // ///Here, the remaining properties whose keys
