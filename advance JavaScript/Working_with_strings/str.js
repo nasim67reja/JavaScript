@@ -85,25 +85,6 @@ truth.charAt(); // Returns 'I' by default charAt has a value of 0
 firstTruth.endsWith('Alla', 11); // Returns true
 firstTruth.endsWith('Allah'); // Returns true
 
-<<<<<<< HEAD
-//  👉👉👉👉👉👉 1 .String.prototype.charAt()
-//  👉👉👉👉👉👉 1 .String.prototype.charAt()
-//  👉👉👉👉👉👉 1 .String.prototype.charAt()
-//  👉👉👉👉👉👉 1 .String.prototype.charAt()
-
-// Some String operation
-const allowedPlane = function (inform) {
-  let informv = inform.toLowerCase();
-  if (informv.includes('knife') || informv.includes('gun')) {
-    return 'The person is not allowed';
-  } else return 'The person is allowed for take off';
-};
-console.log(
-  allowedPlane('I have Knife , some food, coca cola and my cell phone')
-);
-console.log(allowedPlane('I have a gun for my own protection'));
-console.log(allowedPlane('I have socks and a water bottle'));
-=======
 //  👉👉👉👉👉👉 1 .String.prototype.trim()
 // The trim() method removes whitespace from both ends of a string. Whitespace in this context is all the whitespace
 //  characters (space, tab, no-break space, etc.) and all the line terminator characters (LF, CR, etc.).
@@ -120,6 +101,6 @@ console.log(greeting.trim());
 // The valueOf() method returns the primitive value of a String object.
 
 const testString = new String('Hello world !');
+console.log(testString.toString());
 console.log(typeof testString);
 console.log(typeof testString.valueOf());
->>>>>>> 211bd8f06e3dd8c9d1147da1f81d1d26c77e47f5
