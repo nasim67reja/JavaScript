@@ -179,3 +179,11 @@ const student1 = {
   faculty: 'cse',
 };
 student.about.call(student1);
+
+// understand the this keyword
+function nasim1() {
+  console.log(this);
+}
+console.log(this);
+nasim1();
+console.log(nasim1);
