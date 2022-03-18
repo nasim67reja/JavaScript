@@ -155,10 +155,27 @@ const studentFee = (fee, anualFee, cls) =>
 const monthlyFeeOfStudent = studentFee.bind(null, 250, 120); // here null refers to this syntax
 // console.log(monthlyFeeOfStudent(8)); //370
 // console.log(studentFee(250, 120, 9)); // 394
-const addTax = function(rate){
-  return function(value){
-    return value+value*rate
-  }
-}
-const addTaxval = addTax(0.23)
+const addTax = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+const addTaxval = addTax(0.23);
 // console.log('the answer: ' + addTaxval(200));
+
+// ///////////////////////////👉👉👉👉👉 Another example of call method
+const student = {
+  fname: 'Nasim',
+  id: 1806096,
+  faculty: 'Fisheries',
+  about() {
+    console.log(
+      `This is ${this.fname}.My id is ${this.id}.I am belongs to ${this.faculty}`
+    );
+  },
+};
+const student1 = {
+  fname: 'xxx',
+  faculty: 'cse',
+};
+student.about.call(student1);
