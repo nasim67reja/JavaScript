@@ -374,3 +374,24 @@ console.log(findNeedle(haystack_2));
 
 // const n = [2, 1, 3];
 // console.log(n.indexOf(1));
+function spacify(str) {
+  return str.split('').join(' ');
+}
+
+// console.log(spacify('hello world'));
+
+function maxDiff(list) {
+  let max = list[0];
+  let min = list[0];
+  for (const item of list) {
+    if (item > max) max = item;
+    else if (item < min) min = item;
+  }
+  return list.length < 2 ? 0 : max - min;
+}
+
+console.log(maxDiff([0, 1, 2, 3, 4, 5, 16]));
+console.log(maxDiff([1, 2, 3, -4]));
+console.log(maxDiff([2]));
+
+console.log(Math.min(2, 10, 4));
