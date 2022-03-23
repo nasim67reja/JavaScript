@@ -268,7 +268,7 @@ const diceRolls = Array.from({ length: 100 }, () =>
   Math.trunc(Math.random() * 6 + 1)
 );
 // const checkDiceRolls = diceRolls.some(num => num > 6 || num < 2);
-console.log(checkDiceRolls);
+// console.log(checkDiceRolls);
 // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 /*
 Array.from is an important method . we can make a array all the iterables like string, maps ,sets. that's why this method know as from . it's an important use case is the queryselectorAll method returns a nodelist like array . we can convert the nodelist into array and apply the bunch of array method which we can't apply with nodelist
@@ -344,3 +344,33 @@ const safeRegions = regions
   .map(region => region.name);
 
 // console.log(safeRegions);
+
+function well(x) {
+  return x.filter(el => el == 'good').length > 2
+    ? 'I smell a serries'
+    : x.filter(el => el == 'good').length > 0
+    ? 'Publish!'
+    : 'Fail!';
+}
+
+console.log(well(['bad', 'bad', 'bad', 'good']));
+
+function findNeedle(haystack) {
+  return haystack.includes('needle')
+    ? `found the needle at position ${haystack.indexOf('needle')} `
+    : 'nothing';
+}
+var haystack_2 = [
+  '283497238987234',
+  'a dog',
+  'a cat',
+  'some random junk',
+  'a piece of hay',
+  'needle',
+  'something somebody lost a while ago',
+];
+// console.log(haystack_2.indexOf('needle'));
+console.log(findNeedle(haystack_2));
+
+// const n = [2, 1, 3];
+// console.log(n.indexOf(1));
