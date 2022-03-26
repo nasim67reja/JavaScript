@@ -394,4 +394,28 @@ console.log(maxDiff([0, 1, 2, 3, 4, 5, 16]));
 console.log(maxDiff([1, 2, 3, -4]));
 console.log(maxDiff([2]));
 
-console.log(Math.min(2, 10, 4));
+// console.log(Math.min(2, 10, 4));
+function meeting(x) {
+  return x.includes('O') ? x.findIndex(el => el == 'O') : 'None available!';
+}
+
+// console.log(meeting(['X', 'X']));
+// Nice array
+function isNice(arr) {
+  // let arrNew = arr.map(el => arr.includes(el + 1) || arr.includes(el - 1));
+  // // console.log(arrNew);
+  return arr
+    .map(el => arr.includes(el + 1) || arr.includes(el - 1))
+    .includes(false) || arr.length < 1
+    ? false
+    : true;
+}
+// console.log(isNice([2, 10, 9, 3]));
+// console.log(isNice([3, 4, 5, 7]));
+// console.log(isNice([1, 2, 5, 3]));
+// console.log(isNice([]));
+function nthChar(words) {
+  return words.map((el, i) => el[i]).join('');
+}
+
+console.log(nthChar(['yoda', 'best', 'has']));
