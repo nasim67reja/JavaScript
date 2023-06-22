@@ -19,41 +19,35 @@ Well, ask yourself these questions:
 /*
 The call() method is a predefined javascript method. with call(), an object can use a method 
 beolnging to another object. means an object property can use another object property
-*/
-const nasim = {
-  name: 'Nasim Reja',
-  occupasion: 'Programming',
-  age: 24,
-  email: 'nasim******@gmail.com',
-};
-const alex = {
-  name: 'Alex',
-  occupasion: 'Cricketer',
-  age: 27,
-  email: 'alex******@gmail.com',
-};
-
-const aboutUs = [
-  {
-    name: 'Nasim Reja',
-    occupasion: 'Programming',
-    age: 24,
-    email: 'nasim******@gmail.com',
+*/ const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  // book: function() {}
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
   },
-  {
-    name: 'Alex',
-    occupasion: 'Cricketer',
-    age: 27,
-    email: 'alex******@gmail.com',
-  },
-];
+};
+lufthansa.book(239, 'Jonas Schmedtmann');
+lufthansa.book(635, 'John Smith');
 
-function infrmPerson(country) {
-  return `I am ${this.name}.I live in ${country} and I am ${this.age} year old.\
-I love ${this.occupasion} and my email id is ${this.email}`;
-}
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
 
-// console.log(window.infrmPerson.call(aboutUs[0], 'Bangladesh'));
+const book = lufthansa.book;
+
+// Does NOT work
+// book(23, 'Sarah Williams');
+
+// Call method
+book.call(eurowings, 23, 'Sarah Williams');
+console.log('Eurowings ', eurowings);
 
 const resturantFood = {
   item1: 'Burger',
@@ -103,11 +97,10 @@ the this keyword is bound  so its set to whatever a value we pass into bind*/
 //  with a given sequence of arguments preceding any provided when the new function is called.
 
 function userInformation(bankName, password) {
-  console.log(this);
   if (this.password === password)
-    return `Hello ${this.name}, welcome to ${bankName}\nYour account number is ${this.accountNum}\
- and you have ${this.totalBalance} taka only in your account.`;
-  else return `You have entered wrong password 😢😢😢.Please try again...`;
+    return `Hello ${this.name} ${this.accountNum}\
+  ${this.totalBalance}`;
+  else return ` wrong password`;
 }
 const user = [
   {
@@ -145,9 +138,9 @@ const user3InformationBind = user1.userInformation.bind(user3, 'Islami-Bank');
 
 //  there are other place exist where we can use bind method. yes this is eventhandler function
 
-const btn = document.querySelector('.btn');
+// const btn = document.querySelector('.btn');
 // btn.addEventListener('click', user3.aboutme.bind(user3)); // here bind is necessary otherwise this refers to the button
-btn.addEventListener('click', user1.userInformation); // here bind is necessary otherwise this refers to the button
+// btn.addEventListener('click', user1.userInformation); // here bind is necessary otherwise this refers to the button
 
 // // 😊😊😊😊 Another example of Partial applications  (partial applications means pre define/set functions)
 const studentFee = (fee, anualFee, cls) =>
